@@ -1,6 +1,6 @@
 # medicineShop
 
-本项目的名称为medicineShop，具体可分为客户端和服务端两个部分，其中客户端使用JavaScript、html和CSS实现，服务端主要使用python的flask框架实现。
+本项目具体可分为客户端和服务端两个部分，其中客户端使用JavaScript、HTML和CSS实现，服务端主要使用python的flask框架实现。本项目的数据库环境为XAMPP中的MySQL。
 
 ## 客户端
 
