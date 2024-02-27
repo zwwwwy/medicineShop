@@ -1,0 +1,53 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/category/category",
+    "pages/cart/cart",
+    "pages/user/user",
+    "pages/grid/zcy/zcy",
+    "pages/grid/kss/kss",
+    "pages/grid/kgm/kgm",
+    "pages/grid/kbd/kbd"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "商城",
+    "navigationBarBackgroundColor": "#ffffff"
+  },
+
+  "tabBar": {
+    "color": "#666",
+    "selectedColor": "#fa2c19",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "./images/index_black.png",
+        "selectedIconPath": "./images/index_red.png"
+      },
+      {
+        "pagePath": "pages/category/category",
+        "text": "分类",
+        "iconPath": "./images/category_black.png",
+        "selectedIconPath": "./images/category_red.png"
+      },
+      {
+        "pagePath": "pages/cart/cart",
+        "text": "购物车",
+        "iconPath": "./images/cart_black.png",
+        "selectedIconPath": "./images/cart_red.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "我的",
+        "iconPath": "./images/user_black.png",
+        "selectedIconPath": "./images/user_red.png"
+      }
+    ]
+  },
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+
+
+}

@@ -1,0 +1,27 @@
+{
+  "status": 200,
+  "data": {
+    "result": [
+      {
+        "id": 1,
+        "url": "https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/1.png",
+        "name": "商品1"
+      },
+      {
+        "id": 2,
+        "url": "https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/2.png",
+        "name": "商品2"
+      },
+      {
+        "id": 3,
+        "url": "https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/3.png",
+        "name": "商品3"
+      },
+      {
+        "id": 4,
+        "url": "https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/4.png",
+        "name": "商品4"
+      }
+    ]
+  }
+}

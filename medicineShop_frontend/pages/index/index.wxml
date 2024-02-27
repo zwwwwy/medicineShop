@@ -1,0 +1,38 @@
+<view class="index-container">
+    <view class="header">
+        <van-search
+                value="{{ value }}"
+                shape="round"
+                background="#fa2c19"
+                placeholder="请输入搜索关键词"
+        />
+        <!--        value是搜索框的默认值？ 这种东西保存在js的data里-->
+    </view>
+
+    <swiper
+            indicatorDots="{{ swiperOptions.indicatorDots }}"
+            autoplay="{{ swiperOptions.autoplay }}"
+            interval="{{ swiperOptions.interval }}"
+            duration="{{ swiperOptions.duration }}"
+            swiperData="{{ swiperData }}"
+    >
+        <!--        上面几行是给swiper组件中的properties赋值。-->
+    </swiper>
+
+
+    <view class="nav">
+        <van-grid column-num="4">
+            <block wx:for="{{ navData }}" wx:key="index">
+                <van-grid-item
+                        icon="{{ item.icon }}"
+                        text="{{ item.text }}"
+                        link-type="navigateTo"
+                        url="{{ item.url }}"
+                />
+            </block>
+        </van-grid>
+    </view>
+    <!--上面几行是宫格的导航栏-->
+
+    <goodsList goodsData="{{ goodsData }}"></goodsList>
+</view>
