@@ -55,3 +55,9 @@ S
 #components/goodsList/goodsList.json,9\4\94d9e648c8a46ce365b25c85b133814088382226
 Q
 !components/goodsList/goodsList.js,2\3\2330a8a7dfb38e892e8e58e385a4eed8361941c5
+H
+pages/search/search.wxml,1\5\159c507aa888ab502c896549c9c8af85c68cbbe8
+F
+pages/search/search.js,8\9\8962214fee64815103869e50fb3814c5fafc902d
+H
+pages/search/search.json,7\e\7ec2c08f45097f4c458c42bf05c64fd5058ae9c4

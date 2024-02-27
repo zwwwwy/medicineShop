@@ -79,4 +79,10 @@ Page({
         })
         this.http(this.data.page)
     },
+    // 点击搜索框跳转至搜索页面,用搜索框的event api触发
+    onFocus() {
+        wx.navigateTo({
+            url: "/pages/search/search"
+        })
+    }
 })

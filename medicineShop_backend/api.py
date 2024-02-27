@@ -22,12 +22,10 @@ with open('no_data.json', 'r', encoding='utf-8') as file:
 
 @app.route('/api/swiper')
 def get_swiper():
-    with open('swiper.json', 'r', encoding='utf-8') as file:
-        data = json.load(file)
-        if data['status'] == 200:
-            return jsonify(data)
-        else:
-            return jsonify(no_data), 404
+    dic = read_sql_data('swiper')
+    result = list(dic.values())
+    result = {"status": 200, "data": {"result": result}}
+    return jsonify(result)
 
 
 @app.route('/api/goods/<int:page>')

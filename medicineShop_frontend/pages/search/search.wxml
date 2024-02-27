@@ -1,0 +1,9 @@
+<van-search
+  value="{{ value }}"
+  placeholder="请输入搜索关键词"
+  use-action-slot
+  bind:change="onChange"
+  bind:search="onSearch"
+>
+  <van-button type="primary" slot="action" use-action-slot="true" bind:click="onClick">主要按钮</van-button>
+</van-search>
