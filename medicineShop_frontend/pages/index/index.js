@@ -61,15 +61,22 @@ Page({
             console.log(res)
             if (!res.data.msg) {
                 this.setData({
-                    goodsData: res.data.data.result
+                    goodsData: this.data.goodsData.concat(res.data.data.result)
                 })
             } else {
                 wx.showToast({
-                    title: "res.data.msg",
-                    icon: "none"
+                    title: res.data.msg,
+                    icon: "cross",
+                    duration: 2000
                 })
             }
         })
-    }
-
+    },
+    onReachBottom() {
+        // 更改页码
+        this.setData({
+            page: this.data.page + 1
+        })
+        this.http(this.data.page)
+    },
 })

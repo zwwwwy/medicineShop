@@ -8,5 +8,6 @@
     "van-card": "@vant/weapp/card/index",
     "goodsList": "../../components/goodsList/goodsList",
     "goodsList": "/components/goodsList/goodsList"
-  }
+  },
+  "onReachBottomDistance": 50
 }
