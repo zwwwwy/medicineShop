@@ -1,0 +1,19 @@
+.head .top_image {
+    width: 750rpx;
+    height: 510rpx;
+}
+
+.head .price {
+    display: block;
+    margin: auto;
+    width: 740rpx;
+    height: 100rpx;
+    background-color: red;
+    border-radius: 10rpx;
+    color: white;
+    font-size: 43rpx;
+}
+
+.head .title{
+    font-size: 30rpx;
+}

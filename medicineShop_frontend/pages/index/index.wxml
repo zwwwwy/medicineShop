@@ -3,7 +3,7 @@
         <van-search
                 value="{{ value }}"
                 shape="round"
-                background="#fa2c19"
+                background="red"
                 placeholder="请输入搜索关键词"
                 bind:focus="onFocus"
         />

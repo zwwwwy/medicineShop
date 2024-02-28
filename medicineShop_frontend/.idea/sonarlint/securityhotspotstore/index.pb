@@ -75,3 +75,11 @@ R
 package.json,7\0\7030d0b2f71b999ff89a343de08c414af32fc93a
 B
 utils/json2Form.js,e\b\eb4c81239f07de250f3ab4fe68456d2ca466a9c9
+P
+ pages/good_detail/good_detail.js,c\a\ca1316f756764aeadfda190ce30c7a40da5530f5
+R
+"pages/good_detail/good_detail.wxml,6\5\65cc05fde0728a92f94f160721fac60561cb9680
+R
+"pages/good_detail/good_detail.wxss,7\8\789c7ce1178c844abe694b37363cb4b9888fe438
+R
+"pages/good_detail/good_detail.json,4\6\46e02d61ce6c2b703e5df8777ca8e1fa2b32c183

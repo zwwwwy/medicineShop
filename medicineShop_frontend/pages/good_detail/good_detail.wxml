@@ -1,0 +1,52 @@
+<view class="head">
+    <view class="top_image">
+        <!--        <image src="{{ goodDetail.topimage}}" style="height:500rpx; width:750rpx;" mode="aspectFill"></image>-->
+
+        <swiper
+                class="myswiper"
+                indicator-dots="true"
+                autoplay="{{ autoplay }}"
+                circular="true"
+                indicator-color="#fff"
+                indicator-active-color="#fa2c19"
+                style="height:500rpx; width:750rpx;"
+        >
+            <block wx:for="{{goodDetail.topimage}}" wx:key="index">
+                <swiper-item>
+                    <image mode="aspectFill"
+                           style="height:500rpx; width:750rpx;"
+                           src="{{ item }}">
+                    </image>
+                </swiper-item>
+            </block>
+        </swiper>
+
+
+    </view>
+
+    <view class="price">
+        ￥<text style="font-size:75rpx">{{ goodDetail.price }}</text>
+    </view>
+    <view class="title">
+        <text>{{ goodDetail.title }}</text>
+
+    </view>
+</view>
+
+        <!--<view class="details">-->
+        <!--    <image src="{{ goodDetail.details }}" style="width:750rpx"></image>-->
+        <!--</view>-->
+<view class="details" wx:for="{{goodDetail.details}}" wx:key="index">
+    <image src="{{ item }}" style="width:750rpx"></image>
+</view>
+
+<van-goods-action>
+  <van-goods-action-icon icon="chat-o" text="客服" bind:click="onClickIcon" />
+  <van-goods-action-icon icon="cart-o" text="购物车" bind:click="onClickIcon" />
+  <van-goods-action-button
+    text="加入购物车"
+    type="warning"
+    bind:click="onClickButton"
+  />
+  <van-goods-action-button text="立即购买" bind:click="onClickButton" />
+</van-goods-action>

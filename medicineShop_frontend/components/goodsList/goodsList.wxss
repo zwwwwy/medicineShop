@@ -21,9 +21,7 @@
 }
 
 .list .item .goods_info .goods_price {
-    display: block;
     color: red;
-    font-size: 52rpx;
 }
 
 .list .item .goods_info .goods_name {

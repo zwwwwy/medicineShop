@@ -2,7 +2,7 @@ from flask import Flask, jsonify, request
 from all_goods import all_goods
 import json
 from read_sql_data import read_sql_data
-from search_sql import search_sql
+from search_sql import search_sql, search_sql_id
 
 app = Flask(__name__)
 
@@ -48,12 +48,6 @@ def search_good(page):
     # 另外注意一下接收到的信息两端包含引号，调用数据库搜索的时候需要删掉
     # resp = {"status": 200, "data": {"result": post}}
     dic = search_sql('goods', 'title', post[1:-1])
-    # result = list(dic.values())
-    # if result:
-    #     resp = {"status": 200, "data": {"result": result}}
-    # else:
-    #     resp = no_data
-    # return jsonify(resp)
     page_result = paging(dic)
     good = next((good for good in page_result if good['page'] == page), None)
     if good:
@@ -78,6 +72,25 @@ def get_goods(page):
     page_result = paging(dic)
     good = next((good for good in page_result if good['page'] == page), None)
     if good:
+        return jsonify(good)
+    else:
+        return jsonify(no_data)
+
+
+@app.route('/api/goods/detail/<int:page>', methods=['GET', 'POST'])
+def good_detail(page):
+    post = request.values.get('post')
+    # 获取wx:request中data里面post对应的值（只能这样，离谱）
+    # 另外注意一下接收到的信息两端包含引号，调用数据库搜索的时候需要删掉
+    # resp = {"status": 200, "data": {"result": post}}
+    dic = search_sql_id('goods', int(post[1:-1]))
+    result = {"status": 200, "data": {"result": list(dic.values())}}
+    result['data']['result'] = result['data']['result'][0]
+    result['data']['result']['details'] = result['data']['result']['details'].split('&&')
+    result['data']['result']['topimage'] = result['data']['result']['topimage'].split('&&')
+    # 上面一行因为这里的搜索一定只有一个结果，所以让result直接等于搜索到的json对象
+    good = next((good for good in [result] if good['data']['result']['id'] == page), None)
+    if dic:
         return jsonify(good)
     else:
         return jsonify(no_data)

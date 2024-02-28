@@ -9,7 +9,8 @@
     "pages/grid/kgm/kgm",
     "pages/grid/kbd/kbd",
     "pages/search/search",
-    "pages/search_good/search_good"
+    "pages/search_good/search_good",
+    "pages/good_detail/good_detail"
   ],
   "window": {
     "navigationBarTextStyle": "black",
