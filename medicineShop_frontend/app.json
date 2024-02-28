@@ -4,10 +4,8 @@
     "pages/category/category",
     "pages/cart/cart",
     "pages/user/user",
-    "pages/grid/zcy/zcy",
-    "pages/grid/kss/kss",
-    "pages/grid/kgm/kgm",
-    "pages/grid/kbd/kbd",
+    "pages/grid/communication/communication",
+    "pages/grid/information/information",
     "pages/search/search",
     "pages/search_good/search_good",
     "pages/good_detail/good_detail"

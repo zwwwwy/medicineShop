@@ -1,4 +1,4 @@
-// pages/grid/kgm1/kgm1.js
+// pages/grid/communication/communication.js
 Page({
 
   /**

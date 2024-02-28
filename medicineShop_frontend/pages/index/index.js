@@ -18,25 +18,16 @@ Page({
         },
         navData: [
             {
-                icon: "https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/zcy_red.png",
-                text: "中成药",
-                url: "/pages/grid/zcy/zcy"
+                icon: "https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/doctor.png",
+                text: "远程问诊",
+                url: "/pages/grid/communication/communication"
             },
             {
-                icon: "https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/kgm_red.png",
-                text: "抗过敏",
-                url: "/pages/grid/kgm/kgm"
-            },
-            {
-                icon: "https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/kbd_red.png",
-                text: "抗病毒",
-                url: "/pages/grid/kbd/kbd"
-            },
-            {
-                icon: "https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/kss_red.png",
-                text: "抗生素",
-                url: "/pages/grid/kss/kss"
+                icon: "https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/info.png",
+                text: "健康信息",
+                url: "/pages/grid/information/information"
             }
+
         ],
         // 上面这个是导航宫格的数据，本地图像读取不了，所以放在服务器了
         page: 1,

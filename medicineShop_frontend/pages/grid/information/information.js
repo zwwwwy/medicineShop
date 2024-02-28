@@ -1,4 +1,4 @@
-// pages/grid/kbd/kbd.js
+// pages/grid/information/information.js
 Page({
 
   /**

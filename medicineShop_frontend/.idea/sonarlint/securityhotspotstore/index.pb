@@ -83,3 +83,13 @@ R
 "pages/good_detail/good_detail.wxss,7\8\789c7ce1178c844abe694b37363cb4b9888fe438
 R
 "pages/good_detail/good_detail.json,4\6\46e02d61ce6c2b703e5df8777ca8e1fa2b32c183
+L
+pages/category/category.json,a\c\ac37bd0d6eafd7ef7f28ca7b3f7d796aef0e0419
+J
+pages/category/category.js,0\8\08d164d9afb3a5c047b917bc28eb76324490b9ab
+D
+pages/cart/cart.json,5\4\548095e03d145e14fafe3ab9838e74be702062c3
+D
+pages/cart/cart.wxml,0\9\0970112eeec8528ba92e89103a597fc723f8a8d7
+D
+pages/user/user.wxml,f\d\fdbb2d843364bfdbbf89060eac23fec73bd46d45
