@@ -4,8 +4,9 @@
         text="{{ search_name }}的搜索结果如下："
         background="#ecf9ff"
         color="#1989fa"
-        wx:if="{{ no_data===false }}"
 />
+
+
 <van-empty image="search" description="没有找到您搜索的商品" wx:if="{{ no_data===true }}"/>
 
 
