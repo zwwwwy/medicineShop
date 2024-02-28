@@ -1,6 +1,7 @@
 const {request} = require("../utils/request");
 // 从request.js把export的request方法引入
 const {baseUrl, swiper, goods} = require("./base.js");
+const {search} = require("./base");
 
 /**
  * 网络请求方法
@@ -13,9 +14,34 @@ function getSwiper() {
 function getGoods(page) {
     return request(baseUrl + goods + '/' + page, "GET", {})
 }
-// 懒得看小程序怎么请求数据了，这里直接骚操作了
+
+
+function searchGoods(name, page) {
+    return new Promise((resolve, reject) => {
+        wx.request({
+            url: baseUrl + search + '/' + page,
+            method: 'POST',
+            header: {
+                'content-type': 'application/x-www-form-urlencoded'
+            },
+            data: {post: JSON.stringify(name)},
+            success: function (data) {
+                console.log('已经提交数据到数据库');
+                resolve(data);
+            },
+            fail: function (error) {
+                reject(error);
+            },
+            complete: res => {
+                console.log(res.data);
+                console.log('---request complete---');
+            }
+        })
+    });
+}
 
 module.exports = {
     getSwiper,
-    getGoods
+    getGoods,
+    searchGoods
 }

@@ -21,20 +21,45 @@ with open('no_data.json', 'r', encoding='utf-8') as file:
     no_data = json.load(file)
 
 
+def paging(dic):
+    """
+    对从数据库中读取的字典数据进行分页操作
+    :param dic:
+    :return: 返回一个含多个json对象的数据（每个json对象代表一页数据）
+    """
+    result = []
+    page_result = []
+    lst = list(dic.values())
+    for i in range(0, len(dic), 10):
+        result.append(lst[i:i + 10])
+    k = 0
+    for i in result:
+        k += 1
+        tmp = {"status": 200, "page": k, "data": {"result": i}}
+        page_result.append(tmp)
+    return page_result
+
+
 # 搜索商品列表（在goods表的title列）
-@app.route('/api/search', methods=['GET', 'POST'])
-def search_good():
+@app.route('/api/search/<int:page>', methods=['GET', 'POST'])
+def search_good(page):
     post = request.values.get('post')
     # 获取wx:request中data里面post对应的值（只能这样，离谱）
     # 另外注意一下接收到的信息两端包含引号，调用数据库搜索的时候需要删掉
     # resp = {"status": 200, "data": {"result": post}}
     dic = search_sql('goods', 'title', post[1:-1])
-    result = list(dic.values())
-    if result:
-        resp = {"status": 200, "data": {"result": result}}
+    # result = list(dic.values())
+    # if result:
+    #     resp = {"status": 200, "data": {"result": result}}
+    # else:
+    #     resp = no_data
+    # return jsonify(resp)
+    page_result = paging(dic)
+    good = next((good for good in page_result if good['page'] == page), None)
+    if good:
+        return jsonify(good)
     else:
-        resp = no_data
-    return jsonify(resp)
+        return jsonify(no_data)
 
 
 @app.route('/api/swiper')
@@ -49,18 +74,8 @@ def get_swiper():
 
 @app.route('/api/goods/<int:page>')
 def get_goods(page):
-    result = []
-    page_result = []
     dic = read_sql_data('goods')
-    lst = list(dic.values())
-    for i in range(0, len(dic), 10):
-        result.append(lst[i:i + 10])
-    k = 0
-    for i in result:
-        k += 1
-        tmp = {"status": 200, "page": k, "data": {"result": i}}
-        page_result.append(tmp)
-
+    page_result = paging(dic)
     good = next((good for good in page_result if good['page'] == page), None)
     if good:
         return jsonify(good)
