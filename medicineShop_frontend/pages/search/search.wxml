@@ -5,5 +5,5 @@
   bind:change="onChange"
   bind:search="onSearch"
 >
-  <van-button type="primary" slot="action" use-action-slot="true" bind:click="onClick">主要按钮</van-button>
+  <van-button type="primary" size="small" slot="action" use-action-slot="true" bind:click="onClick">搜索</van-button>
 </van-search>

@@ -8,8 +8,8 @@
         <view class="item" wx:for="{{ goodsData }}" wx:key="index">
             <view class="goods_img">
                 <image mode="widthFix"
-                       src="{{ item.url }}">
-                    888
+                       src="{{ item.url }}"
+                       style="width: 100%;height: 100%;">
                 </image>
                 <view class="goods_info">
                     <text class="goods_name">{{ item.title }}</text>

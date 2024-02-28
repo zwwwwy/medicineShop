@@ -12,5 +12,5 @@
 goods.json,4\1\4175eca3f363b30bf83464a6c1262299fe8d9abf
 @
 read_sql_data.py,6\7\670dd28278dc11174fb1989909620f6affe70b4e
-@
-insert_to_sql.py,7\c\7c9997ac54160a8a0517a3822ba66f2ae6af992e
+7
+test.py,a\3\a36e355ddb203d7d4133221f339dc406cb9f480f

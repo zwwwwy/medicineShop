@@ -1,7 +1,8 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from all_goods import all_goods
 import json
 from read_sql_data import read_sql_data
+from search_sql import search_sql
 
 app = Flask(__name__)
 
@@ -20,12 +21,30 @@ with open('no_data.json', 'r', encoding='utf-8') as file:
     no_data = json.load(file)
 
 
+# 搜索商品列表（在goods表的title列）
+@app.route('/api/search', methods=['GET', 'POST'])
+def search_good():
+    post = request.values.get('post')
+    # 获取wx:request中data里面post对应的值（只能这样，离谱）
+    # 另外注意一下接收到的信息两端包含引号，调用数据库搜索的时候需要删掉
+    # resp = {"status": 200, "data": {"result": post}}
+    dic = search_sql('goods', 'title', post[1:-1])
+    result = list(dic.values())
+    if result:
+        resp = {"status": 200, "data": {"result": result}}
+    else:
+        resp = no_data
+    return jsonify(resp)
+
+
 @app.route('/api/swiper')
 def get_swiper():
     dic = read_sql_data('swiper')
     result = list(dic.values())
-    result = {"status": 200, "data": {"result": result}}
-    return jsonify(result)
+    if result:
+        return jsonify({"status": 200, "data": {"result": result}})
+    else:
+        return jsonify(no_data)
 
 
 @app.route('/api/goods/<int:page>')
@@ -46,8 +65,8 @@ def get_goods(page):
     if good:
         return jsonify(good)
     else:
-        return jsonify(no_data), 404
+        return jsonify(no_data)
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host="0.0.0.0", debug=True)

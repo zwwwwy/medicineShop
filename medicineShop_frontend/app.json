@@ -8,7 +8,8 @@
     "pages/grid/kss/kss",
     "pages/grid/kgm/kgm",
     "pages/grid/kbd/kbd",
-    "pages/search/search"
+    "pages/search/search",
+    "pages/search_good/search_good"
   ],
   "window": {
     "navigationBarTextStyle": "black",

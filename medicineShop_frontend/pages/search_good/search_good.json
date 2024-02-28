@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "goodsList": "../../components/goodsList/goodsList",
+    "van-notice-bar": "@vant/weapp/notice-bar/index"
+  }
+}

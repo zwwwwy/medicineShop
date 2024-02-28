@@ -39,3 +39,5 @@ def read_sql_data(table_name: str, host="localhost") -> dict:
 
     except Error as e:
         print("MySQL连接出错", e)
+
+read_sql_data('goods')

@@ -58,7 +58,6 @@ Page({
 
     http(page) {
         getGoods(page).then(res => {
-            console.log(res)
             if (!res.data.msg) {
                 this.setData({
                     goodsData: this.data.goodsData.concat(res.data.data.result)

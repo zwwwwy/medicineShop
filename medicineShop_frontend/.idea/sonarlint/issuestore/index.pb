@@ -61,3 +61,17 @@ F
 pages/search/search.js,8\9\8962214fee64815103869e50fb3814c5fafc902d
 H
 pages/search/search.json,7\e\7ec2c08f45097f4c458c42bf05c64fd5058ae9c4
+A
+pages/search_good,b\c\bcb872a618d58fbc88931ea0e48b1a7f533c10dc
+R
+"pages/search_good/search_good.wxml,8\a\8aa994378accd4108d304dde60dead882ca49822
+R
+"pages/search_good/search_good.wxss,4\5\453dac7f6262b82fbbc815202eaf0874fbbd629f
+P
+ pages/search_good/search_good.js,5\4\547038d6a51fc72951b1e3354b92564669397606
+R
+"pages/search_good/search_good.json,5\3\532ea04c94276b7ee4375a32ad245d46c0eb1b29
+<
+package.json,7\0\7030d0b2f71b999ff89a343de08c414af32fc93a
+B
+utils/json2Form.js,e\b\eb4c81239f07de250f3ab4fe68456d2ca466a9c9

@@ -1,0 +1,11 @@
+<van-notice-bar
+        wrapable
+        scrollable="{{ false }}"
+        text="{{ search_name }}的搜索结果如下："
+        background="#ecf9ff"
+        color="#1989fa"
+/>
+
+<view>
+    <goodsList goodsData="{{ goodsData }}"></goodsList>
+</view>
