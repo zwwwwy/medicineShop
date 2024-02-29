@@ -14,6 +14,43 @@
     font-size: 43rpx;
 }
 
-.head .title{
+.head .title {
     font-size: 30rpx;
+}
+
+.popup .popupItem .image {
+    width: 260rpx;
+    height: 260rpx;
+    margin-top: 15rpx;
+    margin-left: 15rpx;
+    border-radius: 10rpx;
+}
+
+.popup .popupItem .popupPrice {
+    margin-top: 20%;
+    color: red;
+}
+
+.popup .popupItem {
+    display: flex;
+}
+
+.popup .popupStepper {
+    margin-top: 20rpx;
+    margin-left: 15rpx;
+    margin-right: 15rpx;
+    display: flex;
+    justify-content: space-between;
+}
+
+.popup .popupButton {
+    width: 95%;
+    height:6%;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30rpx;
+    margin-top: 72%;
+    margin-left: 2.5%;
 }

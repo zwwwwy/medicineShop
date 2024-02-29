@@ -51,3 +51,30 @@
     />
     <van-goods-action-button text="立即购买" bind:click="clickBuy"/>
 </van-goods-action>
+
+        <!--弹出层-->
+<van-popup
+        show="{{ popup_show }}"
+        round
+        position="bottom"
+        custom-style="height: 80%"
+        bind:close="popupClose"
+        class="popup"
+>
+    <view class="popupItem">
+        <image src="{{ goodDetail.url }}" class="image"></image>
+        <text class="popupPrice">
+            ￥<text style="font-size:75rpx">{{ goodDetail.price }}</text>
+        </text>
+    </view>
+
+<!--    步进器组件-->
+    <view class="popupStepper">
+        <text>数量:</text>
+        <van-stepper value="{{ 1 }}" bind:change="onChange" />
+    </view>
+
+    <view class="popupButton">
+        <text>确定</text>
+    </view>
+</van-popup>

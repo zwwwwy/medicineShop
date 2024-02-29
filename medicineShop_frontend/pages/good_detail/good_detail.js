@@ -8,7 +8,8 @@ Page({
     data: {
         goodDetail: {},
         autoplay:false,
-        id:0
+        id:0,
+        popup_show:false,
     },
 
     /**
@@ -34,10 +35,19 @@ Page({
         })
     },
     clickCart(){
-
+        this.setData({
+            popup_show:true
+        })
     },
     clickBuy(){
-
+        this.setData({
+            popup_show:true
+        })
+    },
+    popupClose(){
+        this.setData({
+            popup_show:false
+        })
     }
 
 
