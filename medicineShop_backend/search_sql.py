@@ -32,16 +32,13 @@ def search_sql(table_name, column_name, keyword, database, host, user, password)
         # 输出每条记录
         df = pd.DataFrame(result, columns=column_names)
         df.set_index('id')
-
-    except Exception as e:
-        print("Error: ", str(e))
-        return
-    finally:
-        # 关闭游标和连接
         cursor.close()
         cnx.close()
 
-    return df.T.to_dict()
+        return df.T.to_dict()
+
+    except Exception as e:
+        print("MySQL连接错误: ", str(e))
 
 
 def search_sql_id(table_name, column_name, keyword, database, host, user, password):
@@ -74,13 +71,10 @@ def search_sql_id(table_name, column_name, keyword, database, host, user, passwo
         # 输出每条记录
         df = pd.DataFrame(result, columns=column_names)
         df.set_index('id')
-
-    except Exception as e:
-        print("Error: ", str(e))
-        return
-    finally:
-        # 关闭游标和连接
         cursor.close()
         cnx.close()
 
-    return df.T.to_dict()
+        return df.T.to_dict()
+
+    except Exception as e:
+        print("MySQL连接错误: ", str(e))
