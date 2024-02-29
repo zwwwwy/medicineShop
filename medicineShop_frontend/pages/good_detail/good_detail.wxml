@@ -71,10 +71,10 @@
 <!--    步进器组件-->
     <view class="popupStepper">
         <text>数量:</text>
-        <van-stepper value="{{ 1 }}" bind:change="onChange" />
+        <van-stepper value="{{ 1 }}" bind:change="goodAmountChange" />
     </view>
 
-    <view class="popupButton">
+    <view class="popupButton" bind:tap="clickSubmit">
         <text>确定</text>
     </view>
 </van-popup>

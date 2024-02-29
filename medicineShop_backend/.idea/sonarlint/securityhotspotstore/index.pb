@@ -14,3 +14,5 @@ goods.json,4\1\4175eca3f363b30bf83464a6c1262299fe8d9abf
 read_sql_data.py,6\7\670dd28278dc11174fb1989909620f6affe70b4e
 =
 search_sql.py,d\e\de5130e4ce4129736faf59bae2720a35a94571b9
+A
+static/appInfo.py,7\b\7b1236d2a04493e33d07d30e2d8af59ea5547351
