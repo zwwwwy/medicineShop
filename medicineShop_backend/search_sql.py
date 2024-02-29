@@ -2,17 +2,21 @@ import mysql.connector
 import pandas as pd
 
 
-def search_sql(table_name, column_name, keyword):
+def search_sql(table_name, column_name, keyword, database, host, user, password) -> dict:
     """
     搜索内容包含关键字的数据
+    :param password:
+    :param user:
+    :param host:
+    :param database:
     :param table_name:
     :param keyword:
     :param column_name:
     :return:
     """
     # 建立与MySQL服务器的连接
-    cnx = mysql.connector.connect(user='root', host='localhost',
-                                  database='medicine_shop')
+    cnx = mysql.connector.connect(user=user, host=host,
+                                  database=database, password=password)
     cursor = cnx.cursor()
 
     # 定义查询语句
@@ -40,17 +44,21 @@ def search_sql(table_name, column_name, keyword):
     return df.T.to_dict()
 
 
-def search_sql_id(table_name, keyword, column_name='id'):
+def search_sql_id(table_name, column_name, keyword, database, host, user, password):
     """
     搜索内容完全匹配的数据
+    :param password:
+    :param user:
+    :param host:
+    :param database:
     :param table_name:
     :param keyword:
     :param column_name:
     :return:
     """
     # 建立与MySQL服务器的连接
-    cnx = mysql.connector.connect(user='root', host='localhost',
-                                  database='medicine_shop')
+    cnx = mysql.connector.connect(user=user, host=host,
+                                  database=database, password=password)
     cursor = cnx.cursor()
 
     # 定义查询语句
@@ -76,7 +84,3 @@ def search_sql_id(table_name, keyword, column_name='id'):
         cnx.close()
 
     return df.T.to_dict()
-
-
-dic = search_sql_id('goods', "感冒药", 'tag')
-print(dic)

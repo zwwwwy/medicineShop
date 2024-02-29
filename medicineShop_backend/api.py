@@ -1,5 +1,6 @@
+from static.info import database, host, user, password
+
 from flask import Flask, jsonify, request
-from all_goods import all_goods
 import json
 from read_sql_data import read_sql_data
 from search_sql import search_sql, search_sql_id
@@ -47,7 +48,7 @@ def search_good(page):
     # 获取wx:request中data里面post对应的值（只能这样，离谱）
     # 另外注意一下接收到的信息两端包含引号，调用数据库搜索的时候需要删掉
     # resp = {"status": 200, "data": {"result": post}}
-    dic = search_sql('goods', 'title', post[1:-1])
+    dic = search_sql('goods', 'title', post[1:-1], database, host, user, password)
     page_result = paging(dic)
     good = next((good for good in page_result if good['page'] == page), None)
     if good:
@@ -59,7 +60,7 @@ def search_good(page):
 # 获取轮播图
 @app.route('/api/swiper')
 def get_swiper():
-    dic = read_sql_data('swiper')
+    dic = read_sql_data('swiper', database, host, user, password)
     result = list(dic.values())
     if result:
         return jsonify({"status": 200, "data": {"result": result}})
@@ -70,7 +71,7 @@ def get_swiper():
 # 获取商品列表（分页）
 @app.route('/api/goods/<int:page>')
 def get_goods(page):
-    dic = read_sql_data('goods')
+    dic = read_sql_data('goods', database, host, user, password)
     page_result = paging(dic)
     good = next((good for good in page_result if good['page'] == page), None)
     if good:
@@ -86,7 +87,7 @@ def good_detail(page):
     # 获取wx:request中data里面post对应的值（只能这样，离谱）
     # 另外注意一下接收到的信息两端包含引号，调用数据库搜索的时候需要删掉
     # resp = {"status": 200, "data": {"result": post}}
-    dic = search_sql_id('goods', int(post[1:-1]))
+    dic = search_sql_id('goods', 'id', int(post[1:-1]), database, host, user, password)
     result = {"status": 200, "data": {"result": list(dic.values())}}
     result['data']['result'] = result['data']['result'][0]
     result['data']['result']['details'] = result['data']['result']['details'].split('&&')
@@ -103,7 +104,7 @@ def good_detail(page):
 @app.route('/api/category/<int:page>', methods=['GET', 'POST'])
 def get_category(page):
     post = request.values.get('post')
-    dic = search_sql_id('goods', post[1:-1], 'tag')
+    dic = search_sql_id('goods', 'tag', post[1:-1], database, host, user, password)
     page_result = paging(dic)
     good = next((good for good in page_result if good['page'] == page), None)
     if good:

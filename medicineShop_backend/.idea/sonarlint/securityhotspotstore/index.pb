@@ -16,3 +16,5 @@ goods.json,4\1\4175eca3f363b30bf83464a6c1262299fe8d9abf
 search_sql.py,d\e\de5130e4ce4129736faf59bae2720a35a94571b9
 A
 static/appInfo.py,7\b\7b1236d2a04493e33d07d30e2d8af59ea5547351
+>
+static/info.py,f\0\f026b3d75c5dfb63612c6e26c53528f62ae9978a

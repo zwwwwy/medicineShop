@@ -3,16 +3,16 @@ from mysql.connector import Error
 import pandas as pd
 
 
-def read_sql_data(table_name: str, host="localhost") -> dict:
+def read_sql_data(table_name, database, host, user, password) -> dict:
     """
-    从数据库中读取全部数据，并转化为字典，默认只在本项目中使用，所以开头的数据写死了。
+    从数据库中读取全部数据，并转化为字典。
+    :param database:
+    :param user:
+    :param password:
     :param host: 数据库地址
     :param table_name: 要读取的表的名称
     :return:
     """
-    user = "root"  # 用户名
-    password = ""  # 密码
-    database = "medicine_shop"  # 要访问的数据库名称
     data = []
     try:
         connection = mysql.connector.connect(host=host, user=user, password=password, database=database)
@@ -39,5 +39,3 @@ def read_sql_data(table_name: str, host="localhost") -> dict:
 
     except Error as e:
         print("MySQL连接出错", e)
-
-read_sql_data('goods')
