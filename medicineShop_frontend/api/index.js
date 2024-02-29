@@ -1,6 +1,6 @@
 const {request} = require("../utils/request");
 // 从request.js把export的request方法引入
-const {baseUrl, swiper, goods, search, good_detail} = require("./base");
+const {baseUrl, swiper, goods, search, good_detail, category} = require("./base");
 
 /**
  * 网络请求方法
@@ -65,9 +65,35 @@ function getGoodDetail(id) {
 }
 
 
+function getCategory(tag, page) {
+    return new Promise((resolve, reject) => {
+        wx.request({
+            url: baseUrl + category + '/' + page,
+            method: 'POST',
+            header: {
+                'content-type': 'application/x-www-form-urlencoded'
+            },
+            data: {post: JSON.stringify(tag)},
+            success: function (data) {
+                console.log('已经提交数据到数据库');
+                resolve(data);
+            },
+            fail: function (error) {
+                reject(error);
+            },
+            complete: res => {
+                console.log(res.data);
+                console.log('---request complete---');
+            }
+        })
+    });
+
+}
+
 module.exports = {
     getSwiper,
     getGoods,
     searchGoods,
-    getGoodDetail
+    getGoodDetail,
+    getCategory
 }

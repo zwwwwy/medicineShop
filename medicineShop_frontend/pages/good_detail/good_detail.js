@@ -7,7 +7,8 @@ Page({
      */
     data: {
         goodDetail: {},
-        autoplay:false
+        autoplay:false,
+        id:0
     },
 
     /**
@@ -19,58 +20,25 @@ Page({
             console.log("商品详情",res.data)
             this.setData(
                 {
-                    goodDetail: res.data.data.result
+                    goodDetail: res.data.data.result,
+                    id:options.id
                 }
             )
         })
     },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady() {
+    // 点击左侧的购物车图标
+    clickCartIcon(){
+        console.log(this.data.id)
+        wx.switchTab({
+          url: '/pages/cart/cart',
+        })
+    },
+    clickCart(){
 
     },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload() {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh() {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom() {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage() {
+    clickBuy(){
 
     }
+
+
 })

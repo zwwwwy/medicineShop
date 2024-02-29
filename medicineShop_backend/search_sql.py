@@ -78,8 +78,5 @@ def search_sql_id(table_name, keyword, column_name='id'):
     return df.T.to_dict()
 
 
-dic = search_sql_id('goods', 1)
-result = {"status": 200, "data": {"result": list(dic.values())}}
-result['data']['result'] = result['data']['result'][0]
-result['data']['result']['details'] = result['data']['result']['details'].split('&&')
-print(result)
+dic = search_sql_id('goods', "感冒药", 'tag')
+print(dic)

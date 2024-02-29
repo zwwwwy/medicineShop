@@ -33,20 +33,6 @@ B
 pages/cart/cart.js,c\1\c1221932f486c3037c82c89e7ee3f838dcb4abb2
 L
 pages/category/category.wxml,b\7\b7e52bf40966a4275859ee0005580aa4c9008b53
-E
-pages/grid/zcy/zcy.js,f\8\f81e68474f4ef3777c3ec45793aea7d49074507c
-G
-pages/grid/zcy/zcy.wxml,5\1\515e307c0a55242b4f64e3af95d0cae488931f21
-G
-pages/grid/zcy/zcy.json,f\3\f32dbffbe26d0090c1fffd4906cbd3cbc2ac8278
-G
-pages/grid/kss/kss.wxml,3\0\30c14c781f46ec520b9c1d938cc302fe48102b95
-G
-pages/grid/kgm/kgm.wxml,8\8\882c0aace618625bb19e83498d1743976862c46c
-G
-pages/grid/kgm/kgm.json,f\9\f9731be6afb29906cd15517d6e46724120e7c8b0
-G
-pages/grid/kbd/kbd.wxml,8\c\8c21d178a288fff658c6c5d71e093768279121e6
 S
 #components/goodsList/goodsList.wxml,8\f\8fbc9b66d0042b0e31f68611b6f853c1bd8cae4e
 S
@@ -93,3 +79,5 @@ D
 pages/cart/cart.wxml,0\9\0970112eeec8528ba92e89103a597fc723f8a8d7
 D
 pages/user/user.wxml,f\d\fdbb2d843364bfdbbf89060eac23fec73bd46d45
+L
+pages/category/category.wxss,6\c\6c16a290e0d4783a914983a906e40738450a2d05

@@ -1,1 +1,17 @@
-/* pages/category/category.wxss */
+.page{
+    display: flex;
+}
+
+.goods-list{
+    margin-left: 20%;
+}
+
+.sidebar{
+    position: fixed;
+    top: 0;
+    width: 20%;
+    bottom: 0;
+    height: 100%;
+    background-color: white;
+
+}

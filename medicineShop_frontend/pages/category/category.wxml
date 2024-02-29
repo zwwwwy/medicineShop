@@ -1,6 +1,21 @@
-<van-sidebar active-key="{{ activeKey }}">
-  <van-sidebar-item title="中成药" />
-  <van-sidebar-item title="感冒药" />
-  <van-sidebar-item title="消炎药" />
-  <van-sidebar-item title="维生素" />
-</van-sidebar>
+<view class="page">
+
+    <view class="sidebar">
+
+        <van-sidebar active-key="{{ activeKey }}" bind:change="onChange">
+            <van-sidebar-item title="中成药"/>
+            <van-sidebar-item title="感冒药"/>
+            <van-sidebar-item title="消炎药"/>
+            <van-sidebar-item title="维生素"/>
+            <van-sidebar-item title="其他"/>
+            <!--            后续如需添加其他内容，记得在js文件里的category_name里也进行修改-->
+        </van-sidebar>
+    </view>
+
+    <!--    <van-notify id="van-notify"/>-->
+
+    <view class="goods-list">
+        <goodsList goodsData="{{ goodsData }}"></goodsList>
+    </view>
+
+</view>

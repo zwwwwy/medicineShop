@@ -56,6 +56,7 @@ def search_good(page):
         return jsonify(no_data)
 
 
+# 获取轮播图
 @app.route('/api/swiper')
 def get_swiper():
     dic = read_sql_data('swiper')
@@ -66,6 +67,7 @@ def get_swiper():
         return jsonify(no_data)
 
 
+# 获取商品列表（分页）
 @app.route('/api/goods/<int:page>')
 def get_goods(page):
     dic = read_sql_data('goods')
@@ -77,6 +79,7 @@ def get_goods(page):
         return jsonify(no_data)
 
 
+# 获取商品详情
 @app.route('/api/goods/detail/<int:page>', methods=['GET', 'POST'])
 def good_detail(page):
     post = request.values.get('post')
@@ -91,6 +94,19 @@ def good_detail(page):
     # 上面一行因为这里的搜索一定只有一个结果，所以让result直接等于搜索到的json对象
     good = next((good for good in [result] if good['data']['result']['id'] == page), None)
     if dic:
+        return jsonify(good)
+    else:
+        return jsonify(no_data)
+
+
+# 获取分类列表（分页）
+@app.route('/api/category/<int:page>', methods=['GET', 'POST'])
+def get_category(page):
+    post = request.values.get('post')
+    dic = search_sql_id('goods', post[1:-1], 'tag')
+    page_result = paging(dic)
+    good = next((good for good in page_result if good['page'] == page), None)
+    if good:
         return jsonify(good)
     else:
         return jsonify(no_data)
