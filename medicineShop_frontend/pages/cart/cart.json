@@ -1,5 +1,7 @@
 {
   "usingComponents": {
-    "van-submit-bar": "@vant/weapp/submit-bar/index"
+    "van-submit-bar": "@vant/weapp/submit-bar/index",
+    "buyList": "../../components/buyList/buyList",
+    "buyList": "/components/buyList/buyList"
   }
 }

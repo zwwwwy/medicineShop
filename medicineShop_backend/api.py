@@ -117,8 +117,9 @@ def get_cart():
     try:
         result = find_cart_info(openid, database, host, user, password)
         print("获取用户购物车信息成功")
+        resule_dic = json.loads(result[0][1])
         if result:
-            return jsonify({"status": 200, "data": {"result": result[0][1]}})
+            return jsonify({"status": 200, "data": {"result": resule_dic}})
         else:
             return jsonify(no_data)
     except errors.ProgrammingError as e:

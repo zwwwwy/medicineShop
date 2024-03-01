@@ -81,5 +81,19 @@ D
 pages/user/user.wxml,f\d\fdbb2d843364bfdbbf89060eac23fec73bd46d45
 L
 pages/category/category.wxss,6\c\6c16a290e0d4783a914983a906e40738450a2d05
-C
-api/index_backup.js,0\3\03d16abac269fc1ddb5e6da535b98950e2158d80
+O
+components/buyList/buyLIst.wxml,b\8\b877da585e0319f433c7fdaf882c19b55e23fd25
+O
+components/buyList/buyList.wxml,2\f\2f1bfa26baaa9269e67d041c8a0b4d98d0fe7720
+O
+components/buyList/buyList.json,8\4\84f63121e9b2b48cfc9ec8dcf372019832bd732e
+M
+components/buyList/buyList.js,1\f\1fff0e8487cc94213f845c405d82337b82b235fe
+O
+components/stepper/stepper.wxml,7\b\7b697f6476a325d545eea5229757eec47a6d950d
+M
+components/stepper/stepper.js,9\2\92515f1df4b91584bbcf4b5aec653738869e102a
+>
+utils/login.js,f\9\f9d87a8191d43306e1f18b40d82104e968d0eaad
+O
+components/buyList/buyList.wxss,5\9\59153077302ceac4436358f6bb98e77f4571adf8

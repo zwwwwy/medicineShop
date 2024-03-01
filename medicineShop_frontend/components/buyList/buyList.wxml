@@ -1,0 +1,15 @@
+<view class="item" wx:for="{{cartDetail}}" wx:key="index">
+
+    <image class="image" src="{{item.url}}"></image>
+
+    <view class="info">
+        <view class="title">
+            {{item.title}}
+        </view>
+
+        <view class="price">
+            ￥<text style="font-size:50rpx">{{item.price}}</text>
+        </view>
+    </view>
+    <view>{{item.amount}}</view>
+</view>

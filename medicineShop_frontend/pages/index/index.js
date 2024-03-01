@@ -53,6 +53,7 @@ Page({
                 this.setData({
                     goodsData: this.data.goodsData.concat(res.data.data.result)
                 })
+                console.log(this.data.goodsData)
             } else {
                 wx.showToast({
                     title: res.data.msg,
