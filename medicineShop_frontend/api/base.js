@@ -10,4 +10,6 @@ module.exports = {
     search:"/api/search", // 搜索接口
     good_detail:"/api/goods/detail", // 商品详情接口
     category:"/api/category", // 商品分类接口
+    cart:"/api/cart", // 购物车接口
+    addCart:"/api/cart/add", // 添加购物车接口
 }

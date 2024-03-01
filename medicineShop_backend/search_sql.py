@@ -15,9 +15,9 @@ def search_sql(table_name, column_name, keyword, database, host, user, password)
     :return:
     """
     # 建立与MySQL服务器的连接
-    cnx = mysql.connector.connect(user=user, host=host,
-                                  database=database, password=password)
-    cursor = cnx.cursor()
+    connection = mysql.connector.connect(user=user, host=host,
+                                         database=database, password=password)
+    cursor = connection.cursor()
 
     # 定义查询语句
     query = f"SELECT * FROM {table_name} WHERE {column_name} LIKE '%{keyword}%'"
@@ -33,7 +33,7 @@ def search_sql(table_name, column_name, keyword, database, host, user, password)
         df = pd.DataFrame(result, columns=column_names)
         df.set_index('id')
         cursor.close()
-        cnx.close()
+        connection.close()
 
         return df.T.to_dict()
 
@@ -54,9 +54,9 @@ def search_sql_id(table_name, column_name, keyword, database, host, user, passwo
     :return:
     """
     # 建立与MySQL服务器的连接
-    cnx = mysql.connector.connect(user=user, host=host,
-                                  database=database, password=password)
-    cursor = cnx.cursor()
+    connection = mysql.connector.connect(user=user, host=host,
+                                         database=database, password=password)
+    cursor = connection.cursor()
 
     # 定义查询语句
     query = f"SELECT * FROM {table_name} WHERE {column_name} = '{keyword}'"
@@ -72,7 +72,7 @@ def search_sql_id(table_name, column_name, keyword, database, host, user, passwo
         df = pd.DataFrame(result, columns=column_names)
         df.set_index('id')
         cursor.close()
-        cnx.close()
+        connection.close()
 
         return df.T.to_dict()
 

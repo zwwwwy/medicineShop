@@ -1,5 +1,5 @@
 // pages/good_detail/good_detail.js
-const {getGoodDetail} = require("../../api/index");
+const {getGoodDetail, addCartGood} = require("../../api/index");
 Page({
 
     /**
@@ -76,6 +76,11 @@ Page({
                     goToCart: false
                 }
             )
+            console.log("id和数量：", this.data.id, this.data.goodAmount)
+            addCartGood(getApp().globalData.openid, this.data.id, this.data.goodAmount).then(res => {
+                console.log(res)
+            })
+
             wx.switchTab({
                 url: '/pages/cart/cart',
 

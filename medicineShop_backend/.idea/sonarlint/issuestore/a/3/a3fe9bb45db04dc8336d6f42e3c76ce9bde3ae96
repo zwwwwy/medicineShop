@@ -1,0 +1,5 @@
+
+ppython:S117K"RRename this parameter "goodId" to match the regular expression ^[_a-z][a-z0-9_]*$.(üâıı8¥ÀéÉß1
+python:S117Œ"[Rename this local variable "goodAmount" to match the regular expression ^[_a-z][a-z0-9_]*$.(¨ù¸üÿÿÿÿ8¥ÀéÉß1
+vpython:S117‹"WRename this local variable "goodId" to match the regular expression ^[_a-z][a-z0-9_]*$.(¦¾™8¥ÀéÉß1
+^python:S1143¤"9Remove this "return" statement from this "finally" block.(Ô’ƒÄşÿÿÿÿ8¥ÀéÉß1
