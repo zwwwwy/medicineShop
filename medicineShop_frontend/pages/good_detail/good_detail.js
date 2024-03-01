@@ -29,6 +29,7 @@ Page({
                 }
             )
         })
+        const app = getApp()
     },
     // 点击左侧的购物车图标
     clickCartIcon() {

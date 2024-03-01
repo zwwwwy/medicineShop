@@ -1,11 +1,14 @@
 const {request, post_request} = require("../utils/request");
 // 从request.js把export的request方法引入
-const {baseUrl, swiper, goods, search, good_detail, category} = require("./base");
+const {baseUrl,login, swiper, goods, search, good_detail, category} = require("./base");
 
 /**
  * 网络请求方法
  */
 
+function  appLogin(code){
+    return post_request(baseUrl + login, code)
+}
 function getSwiper() {
     return request(baseUrl + swiper, "GET", {})
 }
@@ -29,6 +32,7 @@ function getCategory(tag, page) {
 }
 
 module.exports = {
+    appLogin,
     getSwiper,
     getGoods,
     searchGoods,

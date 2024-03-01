@@ -14,7 +14,7 @@
     flex-wrap: wrap; /*防止item自动换行*/
 }
 
-.list  .item{
+.list .item {
     width: 49.75%;
     background-color: white;
     margin-bottom: 0.5%;
@@ -22,10 +22,17 @@
 
 .list .item .goods_info .goods_price {
     color: red;
+    margin-left: 10rpx;
 }
 
 .list .item .goods_info .goods_name {
-    display: block;
-    height: 65px;
+    font-size: 18px;
+    color: black;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
     overflow: hidden;
+    margin-left: 10rpx;
+    margin-right: 10rpx;
 }

@@ -1,5 +1,7 @@
-from static.info import database, host, user, password
+from static.info import database, host, user, password, appId, appSecret
 
+import requests
+import json
 from flask import Flask, jsonify, request
 from tools import no_data, paging
 from read_sql_data import read_sql_data
@@ -11,6 +13,13 @@ app = Flask(__name__)
 @app.route('/api/login', methods=['GET', 'POST'])
 def login():
     post = request.values.get('post')
+    url = f"https://api.weixin.qq.com/sns/jscode2session?appid={appId}&secret={appSecret}&js_code={post[1:-1]}&grant_type=authorization_code"
+    response = requests.get(url)  # 发送GET请求并获取响应结果
+    response = json.loads(response.text)
+    if "errmsg" in response.keys():
+        return jsonify({"status": 400, "data": {"result": "登录失败"}})
+    else:
+        return jsonify({"status": 200, "data": {"result": response}})
 
 
 # 搜索商品列表（在goods表的title列）
