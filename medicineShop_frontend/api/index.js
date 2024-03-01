@@ -1,4 +1,4 @@
-const {request} = require("../utils/request");
+const {request, post_request} = require("../utils/request");
 // 从request.js把export的request方法引入
 const {baseUrl, swiper, goods, search, good_detail, category} = require("./base");
 
@@ -16,78 +16,16 @@ function getGoods(page) {
 
 
 function searchGoods(name, page) {
-    return new Promise((resolve, reject) => {
-        wx.request({
-            url: baseUrl + search + '/' + page,
-            method: 'POST',
-            header: {
-                'content-type': 'application/x-www-form-urlencoded'
-            },
-            data: {post: JSON.stringify(name)},
-            success: function (data) {
-                console.log('已经提交数据到数据库');
-                resolve(data);
-            },
-            fail: function (error) {
-                reject(error);
-            },
-            complete: res => {
-                console.log(res.data);
-                console.log('---request complete---');
-            }
-        })
-    });
+    return post_request(baseUrl + search + '/' + page, name)
 }
 
 function getGoodDetail(id) {
-    return new Promise((resolve, reject) => {
-        wx.request({
-            url: baseUrl + good_detail + '/' + id,
-            method: 'POST',
-            header: {
-                'content-type': 'application/x-www-form-urlencoded'
-            },
-            data: {post: JSON.stringify(id)},
-            success: function (data) {
-                console.log('已经提交数据到数据库');
-                resolve(data);
-            },
-            fail: function (error) {
-                reject(error);
-            },
-            complete: res => {
-                console.log(res.data);
-                console.log('---request complete---');
-            }
-        })
-    });
-
+    return post_request(baseUrl + good_detail + '/' + id, id);
 }
 
 
 function getCategory(tag, page) {
-    return new Promise((resolve, reject) => {
-        wx.request({
-            url: baseUrl + category + '/' + page,
-            method: 'POST',
-            header: {
-                'content-type': 'application/x-www-form-urlencoded'
-            },
-            data: {post: JSON.stringify(tag)},
-            success: function (data) {
-                console.log('已经提交数据到数据库');
-                resolve(data);
-            },
-            fail: function (error) {
-                reject(error);
-            },
-            complete: res => {
-                console.log(res.data);
-                console.log('---request complete---');
-            }
-        })
-    });
-
+    return post_request(baseUrl + category + '/' + page, tag);
 }
 
 module.exports = {

@@ -19,7 +19,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        console.log(options.id)
+        console.log("用户点击的商品id为：",options.id)
         getGoodDetail(options.id).then(res => {
             console.log("商品详情", res.data)
             this.setData(
@@ -32,7 +32,6 @@ Page({
     },
     // 点击左侧的购物车图标
     clickCartIcon() {
-        console.log(this.data.id)
         wx.switchTab({
             url: '/pages/cart/cart',
         })
@@ -70,7 +69,7 @@ Page({
 
         if (this.data.goToCart) {
             // 用户点击了加入购物车
-            // 将商品id和数量传给后端
+            // 将商品id、数量和用户openid传给后端，然后在后端整合数据
             console.log(this.data.goToCart, this.data.goToBuy)
             this.setData({
                     goToCart: false

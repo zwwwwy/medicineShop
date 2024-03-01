@@ -11,8 +11,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    const app = getApp()
     console.log("进入购物车")
+    // 此处应向后端请求用户openid的购物车信息（id+数量，管理数据应在后端）
 
   },
 
