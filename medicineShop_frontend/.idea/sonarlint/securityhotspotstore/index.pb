@@ -105,3 +105,7 @@ W
 'pages/grid/information/information.wxml,9\e\9e152974b5f90ab4ac6936f2fd880d9cc12d2dd3
 W
 'pages/grid/information/information.json,b\4\b4a52303b9d368b092c289fbd47e073faa0158ee
+H
+pages/charge/charge.wxss,a\5\a57257607ba884230fb09d4b696a245fdfc183f6
+H
+pages/charge/charge.wxml,7\7\7779d5852d4f7be034716c35f1936759da9f8df7

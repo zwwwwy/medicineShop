@@ -106,6 +106,7 @@ Page({
             this.setData({
                 goToBuy: false
             })
+            wx.navigateTo({url: "/pages/charge/charge"})
         }
     },
     // 用户在弹出页面修改了商品数量

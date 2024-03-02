@@ -8,7 +8,8 @@
     "pages/grid/information/information",
     "pages/search/search",
     "pages/search_good/search_good",
-    "pages/good_detail/good_detail"
+    "pages/good_detail/good_detail",
+    "pages/charge/charge"
   ],
   "window": {
     "navigationBarTextStyle": "black",

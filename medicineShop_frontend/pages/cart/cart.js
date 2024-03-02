@@ -118,9 +118,8 @@ Page({
             this.setData({
                 sumPrice: totalCost * 100,
                 changed: true
-
             })
-            this.onShow()
+            // this.onShow()
         })
 
 
@@ -143,7 +142,12 @@ Page({
                 cartDetail: this.data.cartDetail,
                 sumPrice: totalCost * 100,
             });
+            this.onShow()
         })
+    },
+    onSubmit(){
+        console.log("用户点击了提交订单")
+        wx.navigateTo({url: "/pages/charge/charge"})
     },
 
 
