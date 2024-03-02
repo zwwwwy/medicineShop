@@ -50,11 +50,12 @@ Page({
 
         getCart(app.globalData.openid).then(res => {
             console.log(res.data)
-            if (res.data.msg) {
+            if (res.data.msg || Object.keys(res.data.data.result).length === 0) {
                 console.log("购物车为空")
                 page.setData({
                     nodata: true
                 })
+
             } else {
                 page.setData({
                     cartData: res.data.data.result,
@@ -84,9 +85,13 @@ Page({
                         page.setData({
                             sumPrice: totalCost * 100
                         })
+                        if (totalCost === 0) {
+                            page.setData({
+                                nodata: true
+                            })
+                        }
                     })
                 }
-
             }
         })
 
@@ -105,20 +110,20 @@ Page({
         // 在载入购物车页面时设置了先登录（只有在这里才设置了）
         // 所以这里不必担心出现没登陆的情况
         changeCartGood(getApp().globalData.openid, this.properties.cartDetail[index].id, this.properties.cartDetail[index].amount).then(res => {
-            console.log(res)
+            let totalCost = this.properties.cartDetail.reduce((total, item) => {
+                return total + item.amount * item.price;
+            }, 0);
+            console.log("购物车商品总价为：", totalCost);
+
+            this.setData({
+                sumPrice: totalCost * 100,
+                changed: true
+
+            })
+            this.onShow()
         })
 
 
-        let totalCost = this.properties.cartDetail.reduce((total, item) => {
-            return total + item.amount * item.price;
-        }, 0);
-        console.log("购物车商品总价为：", totalCost);
-
-        this.setData({
-            sumPrice: totalCost * 100,
-            changed: true
-
-        })
     },
     onClose(event) {
         console.log("删除的商品id为", event.currentTarget.dataset.id)

@@ -1,4 +1,4 @@
-<van-empty description="暂无商品" wx:if="{{nodata}}"/>
+<van-empty description="购物车中暂无商品" wx:if="{{nodata}}"/>
 
 <view wx:if="{{!nodata}}">
 
