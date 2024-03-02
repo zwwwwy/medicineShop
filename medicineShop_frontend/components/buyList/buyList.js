@@ -54,11 +54,27 @@ Component({
             });
         },
         onClose(event) {
-            console.log("删除的商品id为",event.currentTarget.dataset.id)
-            changeCartGood(getApp().globalData.openid, event.currentTarget.dataset.id,0).then(res => {
-                console.log(event)
+            console.log("删除的商品id为", event.currentTarget.dataset.id)
+            changeCartGood(getApp().globalData.openid, event.currentTarget.dataset.id, 0).then(res => {
+                console.log(res)
+                // 找到要删除的商品在cartDetail数组中的索引
+                const index = this.data.cartDetail.findIndex(item => item.id === event.currentTarget.dataset.id);
+                // 删除该商品
+                this.data.cartDetail.splice(index, 1);
+                // 重新计算总价
+                let totalCost = this.data.cartDetail.reduce((total, item) => {
+                    return total + item.amount * item.price;
+                }, 0);
+                console.log("购物车商品总价为：", totalCost);
+                // 更新cartDetail数组和总价
+                this.setData({
+                    cartDetail: this.data.cartDetail,
+                    sumPrice: totalCost * 100,
+                    changed: true
+                });
             })
-            },
+        }
+
 
     },
 
