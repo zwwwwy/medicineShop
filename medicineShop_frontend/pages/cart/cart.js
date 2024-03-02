@@ -1,4 +1,4 @@
-const {getCart, getGoodDetail} = require("../../api/index")
+const {getCart, getGoodDetail, getCartFresh} = require("../../api/index")
 const {wxLogin} = require("../../utils/login")
 
 Page({
@@ -10,18 +10,7 @@ Page({
         initial: false,
         cartData: [],
         cartDetail: [],
-        test_cartData: [
-            {
-                url: "https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good3.jpg",
-                title: "东北制药 维生素C片100mg*100片 预防坏血病急慢性传染疾病紫癜",
-                price: 10
-            },
-            {
-                url: "https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good3.jpg",
-                title: "东北制药 维生素C片100mg*100片 预防坏血病急慢性传染疾病紫癜",
-                price: 10
-            },
-        ],
+
         sumPrice: 0,
         nodata: false
     },
@@ -57,6 +46,7 @@ Page({
             // 此处应向后端请求用户openid的购物车信息（id+数量，管理数据应在后端）
 
             // 这里要先清空购物车信息防止重复加载
+            getCartFresh(app.globalData.openid)
             page.setData({
                 cartDetail: []
             })
@@ -97,10 +87,9 @@ Page({
                             page.setData({
                                 sumPrice: totalCost * 100
                             })
-
-
                         })
                     }
+
                 }
             })
         }

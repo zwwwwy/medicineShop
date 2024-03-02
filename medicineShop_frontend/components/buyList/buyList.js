@@ -1,6 +1,5 @@
 // 这里要接收商品和数量，在这里向后端发送请求拉取商品信息
 // 步进器因为要考虑到商品库存，所以单开组件处理
-const {addCartGood} = require("../../api/index");
 const {changeCartGood} = require("../../api/index");
 
 
@@ -22,6 +21,7 @@ Component({
     methods: {
 
         stepperChange(event) {
+            console.log(event)
             let item = event.currentTarget.dataset.item;
             let index = event.currentTarget.dataset.index;
             let key = `cartDetail[${index}].amount`;
@@ -52,16 +52,14 @@ Component({
             this.setData({
                 changed: false
             });
-        }
+        },
+        onClose(event) {
+            console.log("删除的商品id为",event.currentTarget.dataset.id)
+            changeCartGood(getApp().globalData.openid, event.currentTarget.dataset.id,0).then(res => {
+                console.log(event)
+            })
+            },
 
+    },
 
-    }
 });
-
-// let totalCost = page.data.cartDetail.reduce((total, item) => {
-//     return total + item.amount * item.price;
-// }, 0);
-// console.log("购物车商品总价为：", totalCost);
-// page.setData({
-//     sumPrice: totalCost * 100
-// })

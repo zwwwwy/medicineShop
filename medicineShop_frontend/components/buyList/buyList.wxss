@@ -20,18 +20,18 @@
     margin-right: 10rpx;
     margin-left: 10rpx;
     margin-top: 10rpx;
+    height: 145rpx;
 }
 
 .item .info {
     display: flex;
     width: 100%;
     flex-direction: column;
-    /*width: 60%;*/
-    /*margin-top: 10rpx;*/
+
 }
 .item .price {
     margin-top: auto;
-    margin-bottom: 10rpx;
+    /*margin-bottom: 20rpx;*/
     display: flex;
     justify-content: space-between;
     color: red;

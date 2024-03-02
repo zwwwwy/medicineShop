@@ -101,3 +101,7 @@ D
 pages/cart/cart.wxss,9\3\931f264be506cf0112f9e3125c8517e7d265d80f
 _
 /miniprogram_npm/@vant/weapp/submit-bar/index.js,0\7\077d696541072952b6df91b3f239f42bff11c691
+W
+'pages/grid/information/information.wxml,9\e\9e152974b5f90ab4ac6936f2fd880d9cc12d2dd3
+W
+'pages/grid/information/information.json,b\4\b4a52303b9d368b092c289fbd47e073faa0158ee

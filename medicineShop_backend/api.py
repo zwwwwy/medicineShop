@@ -209,5 +209,35 @@ def get_stepper():
     return jsonify({"status": 200, "data": {"result": return_result}})
 
 
+# 这个函数用来清理用户购物车中amount为0的商品，接收openid
+@app.route('/api/cart/fresh', methods=['POST'])
+def fresh_cart():
+    post = request.values.get('post')
+    openid = post[1:-1]
+    result = find_cart_info(openid, database, host, user, password)
+    if result:
+        data = json.loads(result[0][1])
+        for key in list(data.keys()):
+            if data[key] == 0:
+                del data[key]
+        update_into_cart(openid, data, database, host, user, password)
+    return jsonify({"status": 200, "data": {"result": "清理购物车成功"}})
+
+
+# 删除购物车商品，接收openid和商品id
+@app.route('/api/cart/delete', methods=['POST'])
+def delete_cart():
+    post = request.values.get('post')
+    result_dic = json.loads(post)
+    openid = result_dic['openid']
+    goodId = result_dic['goodId']
+
+    result = find_cart_info(openid, database, host, user, password)
+    data = json.loads(result[0][1])
+    del data[str(goodId)]
+    update_into_cart(openid, data, database, host, user, password)
+    return jsonify({"status": 200, "data": {"result": "删除购物车信息成功"}})
+
+
 if __name__ == '__main__':
     app.run(host="0.0.0.0", debug=True)

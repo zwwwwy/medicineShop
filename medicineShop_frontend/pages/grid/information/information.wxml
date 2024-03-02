@@ -1,2 +1,30 @@
-<!--pages/grid/information/information.wxml-->
-<text>pages/grid/information/information.wxml</text>
+<van-cell-group>
+    <van-field
+            value="{{ username }}"
+            required
+            clearable
+            label="家庭慢性病情况"
+            icon="question-o"
+            placeholder="请输入用户名"
+            bind:click-icon="onClickIcon"
+            size="large"
+    />
+
+    <van-field
+            value="{{ password }}"
+            type="过敏情况"
+            label="密码"
+            placeholder="请输入密码"
+            required
+            border="{{ false }}"
+    />
+
+    <van-field
+            value="{{ password }}"
+            type="是否有孩子"
+            label="密码"
+            placeholder="请输入密码"
+            required
+            border="{{ false }}"
+    />
+</van-cell-group>

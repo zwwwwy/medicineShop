@@ -13,6 +13,8 @@ module.exports = {
     cart:"/api/cart", // 购物车接口
     addCart:"/api/cart/add", // 添加购物车接口
     changeCart:"/api/cart/change", // 改变购物车信息接口，仅用于步进器！！！！！！！
-    stepper:"/api/stepper" // 步进器接口
+    stepper:"/api/stepper", // 步进器接口
+    freshCart:"/api/cart/fresh", // 用来清理购物车里amount为0的商品
+    deleteCart:"/api/cart/delete" // 删除购物车商品
 
 }

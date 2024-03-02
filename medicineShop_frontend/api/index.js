@@ -3,7 +3,8 @@ const {request, post_request} = require("../utils/request");
 const {
     baseUrl, login, swiper, goods,
     search, good_detail, category, cart,
-    addCart,changeCart, stepper
+    addCart, changeCart, stepper, freshCart,
+    deleteCart
 } = require("./base");
 
 /**
@@ -63,6 +64,16 @@ function getStepper(openid, goodId) {
     return post_request(baseUrl + stepper, {openid, goodId});
 }
 
+// 清理购物车里amount为0的商品
+function getCartFresh(openid) {
+    return post_request(baseUrl + freshCart, openid);
+}
+
+// 删除购物车商品
+function deleteCartGood(openid, goodId) {
+    return post_request(baseUrl + deleteCart, {openid, goodId});
+}
+
 module.exports = {
     appLogin,
     getSwiper,
@@ -73,5 +84,7 @@ module.exports = {
     getCart,
     addCartGood,
     getStepper,
-    changeCartGood
+    changeCartGood,
+    getCartFresh,
+    deleteCartGood
 }
