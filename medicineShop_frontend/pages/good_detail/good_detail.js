@@ -20,7 +20,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        console.log("用户点击的商品id为：",options.id)
+        console.log("用户点击的商品id为：", options.id)
         getGoodDetail(options.id).then(res => {
             console.log("商品详情", res.data)
             this.setData(
@@ -86,20 +86,18 @@ Page({
         if (this.data.goToCart) {
             // 用户点击了加入购物车
             // 将商品id、数量和用户openid传给后端，然后在后端整合数据
-            console.log(this.data.goToCart, this.data.goToBuy)
             this.setData({
                     goToCart: false
                 }
             )
             console.log("id和数量：", this.data.id, this.data.goodAmount)
             addCartGood(getApp().globalData.openid, this.data.id, this.data.goodAmount).then(res => {
-                console.log(res)
+                wx.switchTab({
+                    url: '/pages/cart/cart',
+
+                })
             })
 
-            wx.switchTab({
-                url: '/pages/cart/cart',
-
-            })
         }
         if (this.data.goToBuy) {
             // 用户点击了立即购买

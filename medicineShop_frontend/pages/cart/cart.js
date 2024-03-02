@@ -1,5 +1,6 @@
 const {getCart, getGoodDetail, getCartFresh} = require("../../api/index")
 const {wxLogin} = require("../../utils/login")
+const {changeCartGood} = require("../../api/index");
 
 Page({
 
@@ -10,7 +11,6 @@ Page({
         initial: false,
         cartData: [],
         cartDetail: [],
-
         sumPrice: 0,
         nodata: false
     },
@@ -38,8 +38,6 @@ Page({
         const page = this
 
         //下面两行是为了每次进入购物车页面的时候把buyList的changed属性重置
-        const buyListComponent = this.selectComponent('#buyListId');
-        buyListComponent.resetChanged();
 
         function load() {
             console.log("进入购物车")
@@ -104,6 +102,54 @@ Page({
 
     },
 
+    stepperChange(event) {
+        console.log(event)
+        let item = event.currentTarget.dataset.item;
+        let index = event.currentTarget.dataset.index;
+        let key = `cartDetail[${index}].amount`;
+        this.setData({
+            [key]: event.detail
+        });
+        console.log("用户点击的步进器所属的商品信息为", this.properties.cartDetail[index])
+
+        // 在载入购物车页面时设置了先登录（只有在这里才设置了）
+        // 所以这里不必担心出现没登陆的情况
+        changeCartGood(getApp().globalData.openid, this.properties.cartDetail[index].id, this.properties.cartDetail[index].amount).then(res => {
+            console.log(res)
+        })
+
+
+        let totalCost = this.properties.cartDetail.reduce((total, item) => {
+            return total + item.amount * item.price;
+        }, 0);
+        console.log("购物车商品总价为：", totalCost);
+
+        this.setData({
+            sumPrice: totalCost * 100,
+            changed: true
+
+        })
+    },
+    onClose(event) {
+        console.log("删除的商品id为", event.currentTarget.dataset.id)
+        changeCartGood(getApp().globalData.openid, event.currentTarget.dataset.id, 0).then(res => {
+            console.log(res)
+            // 找到要删除的商品在cartDetail数组中的索引
+            const index = this.data.cartDetail.findIndex(item => item.id === event.currentTarget.dataset.id);
+            // 删除该商品
+            this.data.cartDetail.splice(index, 1);
+            // 重新计算总价
+            let totalCost = this.data.cartDetail.reduce((total, item) => {
+                return total + item.amount * item.price;
+            }, 0);
+            console.log("购物车商品总价为：", totalCost);
+            // 更新cartDetail数组和总价
+            this.setData({
+                cartDetail: this.data.cartDetail,
+                sumPrice: totalCost * 100,
+            });
+        })
+    },
 
 
     /**

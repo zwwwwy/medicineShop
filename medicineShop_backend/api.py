@@ -199,11 +199,15 @@ def get_stepper():
     result_cart = find_cart_info(openid, database, host, user, password)
 
     # 这里是防止在购物车没有查询的商品时报错
+    result_cart = json.loads(result_cart[0][1])
     if not result_cart:
         return_result = {"stock": stock, "cart_amount": 0}
     else:
-        result_cart = json.loads(result_cart[0][1])
-        cart_amount = result_cart[goodId]
+        print("用户的购物车信息是", result_cart)
+        if str(goodId) not in result_cart.keys():
+            cart_amount = 0
+        else:
+            cart_amount = result_cart[str(goodId)]
         return_result = {"stock": stock, "cart_amount": cart_amount}
 
     return jsonify({"status": 200, "data": {"result": return_result}})

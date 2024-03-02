@@ -49,8 +49,22 @@
     position: absolute;
     bottom: 2%;
     width: 95%;
-    height:6%;
+    height: 6%;
     background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30rpx;
+    margin-left: 2.5%;
+    color: white;
+}
+
+.popup .popupButton-yellow {
+    position: absolute;
+    bottom: 2%;
+    width: 95%;
+    height: 6%;
+    background-color: orange;
     display: flex;
     justify-content: center;
     align-items: center;

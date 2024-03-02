@@ -68,15 +68,19 @@
         </text>
     </view>
 
-<!--    步进器组件-->
+    <!--    步进器组件-->
     <text wx:if="{{stepperMax>0}}" style="margin-left:15rpx">剩余{{stepperMax}}件！</text>
     <view class="popupStepper">
         <text>数量:</text>
-        <van-stepper value="{{ 1 }}" bind:change="goodAmountChange"  max="{{stepperMax}}" min="0"/>
+        <van-stepper value="{{ 1 }}" bind:change="goodAmountChange" max="{{stepperMax}}" min="0"/>
     </view>
     <text wx:if="{{stepperMax<=0}}" style="margin-left:77%"> 商品暂时无货</text>
 
-    <view class="popupButton" bind:tap="clickSubmit">
+    <view class="popupButton" bind:tap="clickSubmit" wx:if="{{stepperMax>0}}">
         <text>确定</text>
     </view>
+    <view class="popupButton-yellow" wx:if="{{stepperMax<=0}}">
+        <text>无货（或您购物车中的本商品数量将超出库存）</text>
+    </view>
+
 </van-popup>
