@@ -39,66 +39,56 @@ Page({
 
         //下面两行是为了每次进入购物车页面的时候把buyList的changed属性重置
 
-        function load() {
-            console.log("进入购物车")
-            // 此处应向后端请求用户openid的购物车信息（id+数量，管理数据应在后端）
+        console.log("进入购物车")
+        // 此处应向后端请求用户openid的购物车信息（id+数量，管理数据应在后端）
 
-            // 这里要先清空购物车信息防止重复加载
-            getCartFresh(app.globalData.openid)
-            page.setData({
-                cartDetail: []
-            })
+        // 这里要先清空购物车信息防止重复加载
+        getCartFresh(app.globalData.openid)
+        page.setData({
+            cartDetail: []
+        })
 
-            getCart(app.globalData.openid).then(res => {
-                console.log(res.data)
-                if (res.data.msg) {
-                    console.log("购物车为空")
-                    page.setData({
-                        nodata: true
-                    })
-                } else {
-                    page.setData({
-                        cartData: res.data.data.result,
-                        nodata: false
-                    })
+        getCart(app.globalData.openid).then(res => {
+            console.log(res.data)
+            if (res.data.msg) {
+                console.log("购物车为空")
+                page.setData({
+                    nodata: true
+                })
+            } else {
+                page.setData({
+                    cartData: res.data.data.result,
+                    nodata: false
+                })
 
-                    console.log("购物车商品id为：", page.data.cartData)
-                    for (let id in page.data.cartData) {
+                console.log("购物车商品id为：", page.data.cartData)
+                for (let id in page.data.cartData) {
 
-                        // 下面这个函数创建一个新对象将获取的信息和商品数量合并
-                        // 商品数量就是page.data.cartData[id]
-                        // 笑死，估计明天我就看不懂了
-                        getGoodDetail(id).then(res => {
-                            console.log(res)
-                            let resultWithAmount = {
-                                ...res.data.data.result,
-                                amount: page.data.cartData[id]
-                            };
-                            page.setData({
-                                cartDetail: page.data.cartDetail.concat(resultWithAmount)
-                            });
-                            console.log("购物车商品信息为：", page.data.cartDetail);
-                            let totalCost = page.data.cartDetail.reduce((total, item) => {
-                                return total + item.amount * item.price;
-                            }, 0);
-                            console.log("购物车商品总价为：", totalCost);
-                            page.setData({
-                                sumPrice: totalCost * 100
-                            })
+                    // 下面这个函数创建一个新对象将获取的信息和商品数量合并
+                    // 商品数量就是page.data.cartData[id]
+                    // 笑死，估计明天我就看不懂了
+                    getGoodDetail(id).then(res => {
+                        console.log(res)
+                        let resultWithAmount = {
+                            ...res.data.data.result,
+                            amount: page.data.cartData[id]
+                        };
+                        page.setData({
+                            cartDetail: page.data.cartDetail.concat(resultWithAmount)
+                        });
+                        console.log("购物车商品信息为：", page.data.cartDetail);
+                        let totalCost = page.data.cartDetail.reduce((total, item) => {
+                            return total + item.amount * item.price;
+                        }, 0);
+                        console.log("购物车商品总价为：", totalCost);
+                        page.setData({
+                            sumPrice: totalCost * 100
                         })
-                    }
-
+                    })
                 }
-            })
-        }
 
-        if (app.globalData.isLogged) {
-            load()
-        } else {
-            wxLogin().then(res => {
-                load()
-            })
-        }
+            }
+        })
 
     },
 

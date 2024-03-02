@@ -1,4 +1,6 @@
 const {getSwiper, getGoods} = require("../../api/index");
+const {wxLogin} = require("../../utils/login")
+
 Page({
     data: {
         value: "",
@@ -36,7 +38,9 @@ Page({
 
     },
     onLoad() {
-
+        wxLogin().then(res => {
+            console.log("登陆成功")
+        })
         console.log("首页载入")
         getSwiper().then(res => {
             this.setData({
