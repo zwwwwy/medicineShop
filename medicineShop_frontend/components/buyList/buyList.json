@@ -1,5 +1,7 @@
 {
   "component": true,
   "usingComponents": {
+    "van-stepper": "@vant/weapp/stepper/index",
+    "van-submit-bar": "@vant/weapp/submit-bar/index"
   }
 }

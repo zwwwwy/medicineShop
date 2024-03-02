@@ -6,7 +6,7 @@ from flask import Flask, jsonify, request
 from mysql.connector import errors
 from tools import no_data, paging
 from read_sql_data import read_sql_data
-from search_sql import search_sql, search_sql_id
+from search_sql import search_sql, search_sql_id, search_sql_id_in
 from cart import insert_into_cart, find_cart_info, update_into_cart
 
 app = Flask(__name__)
@@ -117,8 +117,9 @@ def get_cart():
     try:
         result = find_cart_info(openid, database, host, user, password)
         print("获取用户购物车信息成功")
-        resule_dic = json.loads(result[0][1])
+
         if result:
+            resule_dic = json.loads(result[0][1])
             return jsonify({"status": 200, "data": {"result": resule_dic}})
         else:
             return jsonify(no_data)
@@ -127,7 +128,7 @@ def get_cart():
             print("查无此人")
             return jsonify(no_data)
         else:
-            raise
+            return jsonify(no_data)
 
 
 # 添加购物车信息
@@ -163,6 +164,49 @@ def add_cart():
     finally:
         print(f"用户{openid}添加购物车信息成功")
         return jsonify({"status": 200, "data": {"result": "添加购物车信息成功"}})
+
+
+# 这个用来在步进器操作购物车后更新数量，仅用于步进器！！！
+# 本函数默认传入的商品id已经存在于购物车里，这里只更新数量，不添加新的商品
+@app.route('/api/cart/change', methods=['POST'])
+def change_cart():
+    post = request.values.get('post')
+    result_dic = json.loads(post)
+    openid = result_dic['openid']
+    goodId = result_dic['goodId']
+    goodAmount = result_dic['goodAmount']
+
+    result = find_cart_info(openid, database, host, user, password)
+    data = json.loads(result[0][1])
+    data[str(goodId)] = goodAmount
+    update_into_cart(openid, data, database, host, user, password)
+    return jsonify({"status": 200, "data": {"result": "更新购物车信息成功"}})
+
+
+# 这个函数接收openid和商品信息，返回该商品的库存和该用户对应商品的购物车数量
+# 这是用来在前端计算步进器的最大数量的
+@app.route('/api/stepper', methods=['GET', 'POST'])
+def get_stepper():
+    post = request.values.get('post')
+    result_dic = json.loads(post)
+
+    openid = result_dic['openid']
+    goodId = result_dic['goodId']
+
+    result_stock = search_sql_id('goods', 'id', goodId, database, host, user, password)
+    stock = result_stock[0]['stock']
+
+    result_cart = find_cart_info(openid, database, host, user, password)
+
+    # 这里是防止在购物车没有查询的商品时报错
+    if not result_cart:
+        return_result = {"stock": stock, "cart_amount": 0}
+    else:
+        result_cart = json.loads(result_cart[0][1])
+        cart_amount = result_cart[goodId]
+        return_result = {"stock": stock, "cart_amount": cart_amount}
+
+    return jsonify({"status": 200, "data": {"result": return_result}})
 
 
 if __name__ == '__main__':

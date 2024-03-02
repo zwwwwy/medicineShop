@@ -1,4 +1,4 @@
-<view class="item" wx:for="{{cartDetail}}" wx:key="index">
+<view class="item" wx:for="{{cartDetail}}" wx:key="index" wx:if="{{item.amount>0}}">
 
     <image class="image" src="{{item.url}}"></image>
 
@@ -8,8 +8,23 @@
         </view>
 
         <view class="price">
-            ￥<text style="font-size:50rpx">{{item.price}}</text>
+            <view>
+                ￥<text style="font-size:50rpx">{{item.price}}</text>
+            </view>
+            <van-stepper max="{{item.stock}}" min="0" value="{{ item.amount }}" async-change bind:change="stepperChange"
+                         data-item="{{item}}" data-index="{{index}}" class="stepper"/>
         </view>
     </view>
-    <view>{{item.amount}}</view>
+</view>
+
+        <!--这里接收从cart页面传入的计算好的总价-->
+
+<view class="bar">
+    <view>
+        <van-submit-bar
+                price="{{ changed ? sumPrice : price }}"
+                button-text="提交订单"
+                bind:submit="onSubmit"
+        />
+    </view>
 </view>

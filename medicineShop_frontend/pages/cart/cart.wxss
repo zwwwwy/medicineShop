@@ -1,1 +1,15 @@
-/* pages/cart/cart.wxss */
+/*.page  {*/
+/*    padding-bottom: 100rpx;*/
+/*}*/
+
+.page .bar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    /*height: 100rpx;*/
+    background-color: black;
+}
+
+.page .buyList {
+    padding-bottom: 100rpx;
+}

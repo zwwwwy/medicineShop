@@ -26,7 +26,7 @@ App({
         userInfo: null,
         isLogged: false,
         openid: null,
-        session_key: null
+        session_key: null,
 
     }
 })

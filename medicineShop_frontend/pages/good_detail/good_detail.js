@@ -1,5 +1,5 @@
 // pages/good_detail/good_detail.js
-const {getGoodDetail, addCartGood} = require("../../api/index");
+const {getGoodDetail, addCartGood, getStepper} = require("../../api/index");
 Page({
 
     /**
@@ -10,9 +10,10 @@ Page({
         autoplay: false,
         id: 0,
         popup_show: false,
-        goodAmount: 1,
+        goodAmount: 1, // 这个是当前步进器的值
         goToCart: false, // goToCart用于接收用户是否点击了购物车图标，从而判断进入购物车还是结算页面
         goToBuy: false, // goToBuy用于接收用户是否点击了立即购买按钮，从而判断进入购物车还是结算页面
+        stepperMax: 100, // 这个是步进器的最大值，应该是后端返回的库存
     },
 
     /**
@@ -29,7 +30,6 @@ Page({
                 }
             )
         })
-        const app = getApp()
     },
     // 点击左侧的购物车图标
     clickCartIcon() {
@@ -39,10 +39,25 @@ Page({
     },
     // 点击加入购物车按钮
     clickCart() {
+        // 这里应该读取后端中本用户的购物车信息和商品库存，限制步进器的最大值
+        // 我觉得不需要读取其他用户的，毕竟只是加入购物车，如果按照这个逻辑写的话
+        // 当其他用户的购物车超出库存步进器也会自动调整的吧。
+
+        //那么这里需要传入商品id和openid，后端返回库存和购物车数量，在这里做差(这样结算页面不用重做)
         this.setData({
             popup_show: true,
             goToCart: true
         })
+
+        // 如果用户手太快了这里是获取不到购物车信息的，可以在这里加上一个登陆验证，参见cart.js
+        // 为了省时间先不写了
+        getStepper(getApp().globalData.openid, this.data.id).then(res => {
+            console.log("库存和购物车数量", res.data)
+            this.setData({
+                stepperMax: res.data.data.result.stock - res.data.data.result.cart_amount
+            })
+        })
+
     },
     // 点击立即购买按钮
     clickBuy() {

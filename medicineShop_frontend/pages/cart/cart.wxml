@@ -1,10 +1,21 @@
-<!--<text wx:for="{{cartData}}" wx:key="index">-->
-<!--   {{index}}:{{item}}-->
-<!--</text>-->
-<buyList cartDetail="{{cartDetail}}"></buyList>
+<van-empty description="描述文字" wx:if="{{nodata}}"/>
 
-<van-submit-bar
-        price="{{ 3050 }}"
-        button-text="提交订单"
-        bind:submit="onSubmit"
-/>
+<view class="page" wx:if="{{!nodata}}">
+
+    <view class="buyList">
+        <buyList cartDetail="{{cartDetail}}" price="{{sumPrice}}"  id="buyListId"></buyList>
+
+    </view>
+
+<!--    <view class="bar">-->
+<!--        <view>-->
+<!--            <van-submit-bar-->
+<!--                    price="{{ sumPrice }}"-->
+<!--                    button-text="提交订单"-->
+<!--                    bind:submit="onSubmit"-->
+<!--    cart页面没写onSubmit方法-->
+<!--            />-->
+<!--        </view>-->
+<!--    </view>-->
+
+</view>

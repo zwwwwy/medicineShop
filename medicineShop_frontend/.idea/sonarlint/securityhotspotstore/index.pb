@@ -97,3 +97,7 @@ M
 utils/login.js,f\9\f9d87a8191d43306e1f18b40d82104e968d0eaad
 O
 components/buyList/buyList.wxss,5\9\59153077302ceac4436358f6bb98e77f4571adf8
+D
+pages/cart/cart.wxss,9\3\931f264be506cf0112f9e3125c8517e7d265d80f
+_
+/miniprogram_npm/@vant/weapp/submit-bar/index.js,0\7\077d696541072952b6df91b3f239f42bff11c691

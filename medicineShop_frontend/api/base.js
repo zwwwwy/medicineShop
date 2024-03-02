@@ -12,4 +12,7 @@ module.exports = {
     category:"/api/category", // 商品分类接口
     cart:"/api/cart", // 购物车接口
     addCart:"/api/cart/add", // 添加购物车接口
+    changeCart:"/api/cart/change", // 改变购物车信息接口，仅用于步进器！！！！！！！
+    stepper:"/api/stepper" // 步进器接口
+
 }

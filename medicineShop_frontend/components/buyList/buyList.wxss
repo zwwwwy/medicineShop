@@ -31,7 +31,13 @@
 }
 .item .price {
     margin-top: auto;
-    margin-bottom: 15rpx;
-    display: ;
+    margin-bottom: 10rpx;
+    display: flex;
+    justify-content: space-between;
     color: red;
+}
+
+.item .price .stepper{
+    margin-top: 15rpx;
+    margin-right: 10rpx;
 }
