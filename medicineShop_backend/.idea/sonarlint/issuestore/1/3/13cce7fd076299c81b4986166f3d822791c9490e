@@ -1,9 +1,11 @@
 
-ipython:S117K"RRename this parameter "goodId" to match the regular expression ^[_a-z][a-z0-9_]*$.(üâýý
-xpython:S117Ž"[Rename this local variable "goodAmount" to match the regular expression ^[_a-z][a-z0-9_]*$.(¨ù¸üÿÿÿÿ
-opython:S117"WRename this local variable "goodId" to match the regular expression ^[_a-z][a-z0-9_]*$.(¦¾™
-Wpython:S1143¦"9Remove this "return" statement from this "finally" block.(Ô’ƒÄþÿÿÿÿ
-xpython:S117±"[Rename this local variable "goodAmount" to match the regular expression ^[_a-z][a-z0-9_]*$.(¨ù¸üÿÿÿÿ
-opython:S117°"WRename this local variable "goodId" to match the regular expression ^[_a-z][a-z0-9_]*$.(¦¾™
-opython:S117Â"WRename this local variable "goodId" to match the regular expression ^[_a-z][a-z0-9_]*$.(¦¾™
-opython:S117í"WRename this local variable "goodId" to match the regular expression ^[_a-z][a-z0-9_]*$.(¦¾™
+ppython:S117M"RRename this parameter "goodId" to match the regular expression ^[_a-z][a-z0-9_]*$.(üâýý8“Á¤ à1
+python:S117"[Rename this local variable "goodAmount" to match the regular expression ^[_a-z][a-z0-9_]*$.(¨ù¸üÿÿÿÿ8“Á¤ à1
+vpython:S117"WRename this local variable "goodId" to match the regular expression ^[_a-z][a-z0-9_]*$.(¦¾™8“Á¤ à1
+^python:S1143¨"9Remove this "return" statement from this "finally" block.(Ô’ƒÄþÿÿÿÿ8“Á¤ à1
+python:S117³"[Rename this local variable "goodAmount" to match the regular expression ^[_a-z][a-z0-9_]*$.(¨ù¸üÿÿÿÿ8“Á¤ à1
+vpython:S117²"WRename this local variable "goodId" to match the regular expression ^[_a-z][a-z0-9_]*$.(¦¾™8“Á¤ à1
+vpython:S117Ä"WRename this local variable "goodId" to match the regular expression ^[_a-z][a-z0-9_]*$.(¦¾™8“Á¤ à1
+vpython:S117ï"WRename this local variable "goodId" to match the regular expression ^[_a-z][a-z0-9_]*$.(¦¾™8“Á¤ à1
+>python:S125€"Remove this commented out code.(ò‘ó‚8“Á¤ à1
+^python:S1143”"9Remove this "return" statement from this "finally" block.(Ô’ƒÄþÿÿÿÿ8“Á¤ à1

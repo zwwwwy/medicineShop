@@ -1,6 +1,5 @@
-const {getCart, getGoodDetail, getCartFresh} = require("../../api/index")
+const {getCart, getGoodDetail, getCartFresh, changeCartGood, addOrderGood} = require("../../api/index")
 const {wxLogin} = require("../../utils/login")
-const {changeCartGood} = require("../../api/index");
 
 Page({
 
@@ -12,7 +11,9 @@ Page({
         cartData: [],
         cartDetail: [],
         sumPrice: 0,
-        nodata: false
+        nodata: false,
+        selectAll: false,
+        orderList: []
     },
 
     /**
@@ -45,7 +46,9 @@ Page({
         // 这里要先清空购物车信息防止重复加载
         getCartFresh(app.globalData.openid)
         page.setData({
-            cartDetail: []
+            cartDetail: [],
+            orderList: [],
+            selectAll: false,
         })
 
         getCart(app.globalData.openid).then(res => {
@@ -72,24 +75,14 @@ Page({
                         console.log(res)
                         let resultWithAmount = {
                             ...res.data.data.result,
-                            amount: page.data.cartData[id]
+                            amount: page.data.cartData[id],
+                            checked: false
                         };
                         page.setData({
                             cartDetail: page.data.cartDetail.concat(resultWithAmount)
                         });
                         console.log("购物车商品信息为：", page.data.cartDetail);
-                        let totalCost = page.data.cartDetail.reduce((total, item) => {
-                            return total + item.amount * item.price;
-                        }, 0);
-                        console.log("购物车商品总价为：", totalCost);
-                        page.setData({
-                            sumPrice: totalCost * 100
-                        })
-                        if (totalCost === 0) {
-                            page.setData({
-                                nodata: true
-                            })
-                        }
+
                     })
                 }
             }
@@ -145,11 +138,105 @@ Page({
             this.onShow()
         })
     },
-    onSubmit(){
-        console.log("用户点击了提交订单")
-        wx.navigateTo({url: "/pages/charge/charge"})
-    },
 
+    // 跳转页面
+    changePage(event) {
+        wx.navigateTo({url: "/pages/good_detail/good_detail?id=" + event.currentTarget.dataset.id})
+    },
+    // 复选框改变
+    checkboxChange(event) {
+        // 找到被点击复选框的索引
+        const index = this.data.cartDetail.findIndex(item => item.id === event.currentTarget.dataset.id);
+        this.setData({
+            [`cartDetail[${index}].checked`]: event.detail,
+        });
+        if (event.detail === true) {
+            // 如果复选框被选中，将商品的id添加到 orderList中
+            this.setData({
+                orderList: [...this.data.orderList, event.currentTarget.dataset.id]
+            });
+        } else {
+            // 如果复选框被取消选中，将商品的id从orderList移除并关闭全选
+            this.setData({
+                orderList: this.data.orderList.filter(id => id !== event.currentTarget.dataset.id),
+                selectAll: false
+            });
+        }
+        console.log("用户选择的商品id为", this.data.orderList)
+        const totalCost = this.data.cartDetail.reduce((total, item) => {
+            if (item.checked) {
+                return total + item.amount * item.price;
+            } else {
+                return total;
+            }
+        }, 0);
+        console.log("选中商品的总价为：", totalCost);
+        this.setData({
+            sumPrice: totalCost * 100
+        });
+    },
+    // 全选框改变
+    selectAllChange(event) {
+        console.log("用户点击全选")
+        this.setData({
+            selectAll: event.detail
+        })
+        if (event.detail === true) {
+            // 找出所有amount不等于0的商品
+            const validItems = this.data.cartDetail.filter(item => item.amount !== 0);
+
+            // 将这些商品的id添加到orderList中
+            const newOrderList = validItems.map(item => item.id);
+
+            // 将所有商品的checked属性设置为true
+            const newCartDetail = this.data.cartDetail.map(item => ({...item, checked: true}));
+
+            // 更新orderList和cartDetail
+            this.setData({
+                orderList: newOrderList,
+                cartDetail: newCartDetail,
+            });
+            console.log("用户选择的商品id为", this.data.orderList)
+
+            // 计算总价
+            let totalCost = this.data.cartDetail.reduce((total, item) => {
+                return total + item.amount * item.price;
+            }, 0);
+            console.log("购物车商品总价为：", totalCost);
+            this.setData({
+                sumPrice: totalCost * 100
+            })
+        } else {
+            // 清空orderList
+            this.setData({
+                orderList: []
+            });
+
+            // 将所有商品的checked属性设置为false
+            const newCartDetail = this.data.cartDetail.map(item => ({...item, checked: false}));
+
+            this.setData({
+                cartDetail: newCartDetail,
+                sumPrice: 0
+            });
+
+
+        }
+    },
+    // 点击提交订单，先要把选中商品的id和数量传到后端，然后在后端从购物车中移出这些商品
+    onSubmit() {
+        console.log("用户点击了提交订单")
+        const orderList = this.data.cartDetail
+            .filter(item => this.data.orderList.includes(item.id))
+            .map(item => ({goodId: item.id, amount: item.amount}));
+
+        console.log("用户选择的商品信息为", orderList);
+        addOrderGood(getApp().globalData.openid, orderList).then(res => {
+            // console.log(res)
+            // wx.navigateTo({url: `/pages/charge/charge`});
+        })
+
+    },
 
     /**
      * 生命周期函数--监听页面隐藏

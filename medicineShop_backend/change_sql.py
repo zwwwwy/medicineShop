@@ -75,8 +75,3 @@ def insert_sql(table_name, columns, values, database, host, user, password):
             connection.close()
     except Error as e:
         print("MySQL连接错误：", e)
-
-
-from static.info import host, user, password, database
-
-update_sql('cart', 'goodid', 5, "openid=123", database, host, user, password)

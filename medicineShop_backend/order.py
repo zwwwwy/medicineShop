@@ -2,9 +2,9 @@ import json
 import mysql.connector
 
 
-def insert_into_cart(openid, data, database, host, user, password):
+def insert_into_order(openid, data, database, host, user, password):
     """
-    本函数仅用于把信息插入本项目的购物车，data为字典
+    本函数仅用于把信息插入本项目的订单信息，data为字典
     :param openid:
     :param data:
     :param database:
@@ -17,16 +17,16 @@ def insert_into_cart(openid, data, database, host, user, password):
                                          database=database, password=password)
     cursor = connection.cursor()
     json_str = json.dumps(data)
-    sql = "INSERT INTO cart (openid, infoJson) VALUES (%s,%s);"
+    sql = "INSERT INTO orderinfo (openid, orderInfo) VALUES (%s,%s);"
     cursor.execute(sql, (openid, json_str))
     connection.commit()
     cursor.close()
     connection.close()
 
 
-def find_cart_info(openid, database, host, user, password):
+def find_order_into(openid, database, host, user, password):
     """
-    本函数查找某openid的购物车信息，返回结果为列表套元组，元组第二项为json字符串
+    本函数查找某openid的订单信息，返回结果为列表套元组，元组第二项为json字符串
     :param openid:
     :param database:
     :param host:
@@ -37,7 +37,7 @@ def find_cart_info(openid, database, host, user, password):
     connection = mysql.connector.connect(user=user, host=host,
                                          database=database, password=password)
     cursor = connection.cursor()
-    sql = "SELECT * FROM cart WHERE openid = %s;"
+    sql = "SELECT * FROM orderinfo WHERE openid = %s;"
     cursor.execute(sql, (openid,))
     result = cursor.fetchall()
     cursor.close()
@@ -45,9 +45,9 @@ def find_cart_info(openid, database, host, user, password):
     return result
 
 
-def update_into_cart(openid, data, database, host, user, password):
+def update_into_order(openid, data, database, host, user, password):
     """
-    本函数仅用于修改本项目cart表的内容，data为字典
+    本函数仅用于修改本项目order表的内容，data为字典
     :param openid:
     :param data:
     :param database:
@@ -60,11 +60,8 @@ def update_into_cart(openid, data, database, host, user, password):
                                          database=database, password=password)
     cursor = connection.cursor()
     json_str = json.dumps(data)
-    sql = "UPDATE cart SET infoJson=(%s) WHERE openid=(%s);"
+    sql = "UPDATE orderinfo SET orderInfo=(%s) WHERE openid=(%s);"
     cursor.execute(sql, (json_str, openid))
     connection.commit()
     cursor.close()
     connection.close()
-
-
-

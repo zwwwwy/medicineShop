@@ -99,3 +99,5 @@ H
 pages/charge/charge.wxss,a\5\a57257607ba884230fb09d4b696a245fdfc183f6
 H
 pages/charge/charge.wxml,7\7\7779d5852d4f7be034716c35f1936759da9f8df7
+F
+pages/charge/charge.js,f\4\f45bb61db5e65f2df3b56afc8ce3a2cab00d094a

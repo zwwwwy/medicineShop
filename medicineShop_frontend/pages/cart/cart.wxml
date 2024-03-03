@@ -6,15 +6,22 @@
                     class="page">
 
         <view class="item">
-            <image class="image" src="{{item.url}}"></image>
+
+            <view class="left">
+                <van-checkbox value="{{ item.checked }}" bind:change="checkboxChange" data-id="{{item.id}}"
+                              checked-color="red" class="checkbox"></van-checkbox>
+                <image class="image" src="{{item.url}}" bind:tap="changePage" data-id="{{item.id}}"></image>
+
+            </view>
             <van-cell-group class="info">
                 <view>
-                    <view class="title">
+
+                    <view class="title" bind:tap="changePage" data-id="{{item.id}}">
                         {{item.title}}
                     </view>
 
                     <view class="price">
-                        <view>
+                        <view style="margin-top:auto">
                             ￥<text style="font-size:50rpx">{{item.price}}</text>
                         </view>
                         <van-stepper max="{{item.stock}}" min="0" value="{{ item.amount }}" async-change
@@ -34,12 +41,28 @@
     <view class="bar">
         <view>
             <van-submit-bar
+                    price="{{0}}"
+                    button-text="提交订单"
+                    bind:submit="onSubmit"
+                    disabled
+                    wx:if="{{orderList.length<=0}}"
+            >
+                <van-checkbox value="{{ selectAll }}" checked-color="red" bind:change="selectAllChange">全选
+                </van-checkbox>
+            </van-submit-bar>
+        </view>
+
+        <view>
+            <van-submit-bar
                     price="{{sumPrice}}"
                     button-text="提交订单"
                     bind:submit="onSubmit"
-            />
+                    wx:if="{{orderList.length>0}}"
+            >
+                <van-checkbox value="{{ selectAll }}" checked-color="red" bind:change="selectAllChange">全选
+                </van-checkbox>
+            </van-submit-bar>
         </view>
-
     </view>
 
 </view>

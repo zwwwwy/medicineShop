@@ -11,9 +11,13 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) {
-
-  },
+ onLoad(query) {
+    // 获取传递过来的id和amount
+    const ids = query.id;
+    const amounts = query.amount;
+    console.log("用户要购买的商品id为", ids);
+    console.log("用户要购买的商品数量为", amounts);
+},
 
   /**
    * 生命周期函数--监听页面初次渲染完成

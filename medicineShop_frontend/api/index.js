@@ -4,7 +4,7 @@ const {
     baseUrl, login, swiper, goods,
     search, good_detail, category, cart,
     addCart, changeCart, stepper, freshCart,
-    deleteCart
+    deleteCart, addOrder
 } = require("./base");
 
 /**
@@ -74,6 +74,11 @@ function deleteCartGood(openid, goodId) {
     return post_request(baseUrl + deleteCart, {openid, goodId});
 }
 
+// 添加订单
+function addOrderGood(openid, orderList) {
+    return post_request(baseUrl + addOrder, {openid, orderList});
+}
+
 module.exports = {
     appLogin,
     getSwiper,
@@ -86,5 +91,6 @@ module.exports = {
     getStepper,
     changeCartGood,
     getCartFresh,
-    deleteCartGood
+    deleteCartGood,
+    addOrderGood
 }

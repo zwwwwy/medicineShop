@@ -2,12 +2,14 @@ from static.info import database, host, user, password, appId, appSecret
 
 import requests
 import json
+import time
 from flask import Flask, jsonify, request
 from mysql.connector import errors
 from tools import no_data, paging
 from read_sql_data import read_sql_data
 from search_sql import search_sql, search_sql_id, search_sql_id_in
 from cart import insert_into_cart, find_cart_info, update_into_cart
+from order import find_order_into, insert_into_order, update_into_order
 
 app = Flask(__name__)
 
@@ -241,6 +243,37 @@ def delete_cart():
     del data[str(goodId)]
     update_into_cart(openid, data, database, host, user, password)
     return jsonify({"status": 200, "data": {"result": "删除购物车信息成功"}})
+
+# 这里接收前端传入的openid、商品id、数量，并加上时间和订单状态0，插入到order表中
+# 在前端设置了只有选择商品才会结算，所以不用判断post是否为空
+@app.route('/api/order', methods=['POST'])
+def add_order():
+    post = request.values.get('post')
+    result_dic = json.loads(post)
+    openid = result_dic['openid']
+    current_time = time.strftime('%Y%m%d%H%M%S', time.localtime())
+    order_list = result_dic['orderList']
+    # result = {current_time: {str(i['goodId']): {"amount": i["amount"], "status": 0} for i in order_list}}
+    # insert_into_order(openid, result, database, host, user, password)
+    try:
+        result = find_order_into(openid, database, host, user, password)
+        print(result)
+        if result:
+            data = json.loads(result[0][1])
+            data[current_time] = {str(i['goodId']): {"amount": i["amount"], "status": 0} for i in order_list}
+            update_into_order(openid, data, database, host, user, password)
+        else:
+            data = {current_time: {str(i['goodId']): {"amount": i["amount"], "status": 0} for i in order_list}}
+            insert_into_order(openid, data, database, host, user, password)
+    except errors.ProgrammingError as e:
+        if e.errno == 1054:
+            data = {current_time: {str(i['goodId']): {"amount": i["amount"], "status": 0} for i in order_list}}
+            insert_into_order(openid, data, database, host, user, password)
+        else:
+            raise
+    finally:
+        print(f"用户{openid}添加订单信息成功")
+        return jsonify({"status": 200, "data": {"result": "添加购物车信息成功"}})
 
 
 if __name__ == '__main__':
