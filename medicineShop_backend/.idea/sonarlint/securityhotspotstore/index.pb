@@ -1,8 +1,6 @@
 
 <
 all_goods.py,e\7\e7956e4aa8456a7c0fe804703c059a7001bc58fb
-6
-api.py,a\3\a3fe9bb45db04dc8336d6f42e3c76ce9bde3ae96
 >
 all_goods.json,3\9\394e31ba9e47a5a7789baea8ea29387a4e5caf64
 ;
@@ -24,3 +22,5 @@ goods.json,4\1\4175eca3f363b30bf83464a6c1262299fe8d9abf
 tools.py,2\f\2f32e6a3da3447537e101a18422c37ca8e829af3
 7
 cart.py,5\d\5d534205a2ef0d7f909fcafa2d5b5e78d8710035
+6
+app.py,1\3\13cce7fd076299c81b4986166f3d822791c9490e
