@@ -1,0 +1,19 @@
+<view>这里是支付页面</view>
+<van-button type="primary" bind:click="paySuccess">触发支付成功</van-button>
+<van-button type="danger" bind:click="payFail">触发支付失败</van-button>
+
+<van-dialog
+  title="支付成功"
+  message="点击确定返回首页"
+  show="{{ success }}"
+  bind:close="hasPaid"
+/>
+
+<van-dialog
+        title="支付失败"
+        message="结算页的商品将会送回购物车，点击确定返回购物车"
+        show="{{ fail }}"
+        bind:close="toCart"
+/>
+
+

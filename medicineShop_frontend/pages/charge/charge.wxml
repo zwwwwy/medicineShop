@@ -1,1 +1,35 @@
-这里是结算页面
+
+<van-cell title="{{address}}" is-link bind:click="showOuterPopup"/>
+<van-popup show="{{outerPopupShow}}" position="bottom" custom-style="height: 45" bind:close="outerPopupClose">
+
+    <van-cell title="{{addressShort}}" is-link bind:click="showPopup"/>
+    <van-popup show="{{ popupShow }}" position="bottom" custom-style="height: 45">
+        <van-area area-list="{{ areaList }}" bind:confirm="addressShortConfirm" bind:cancel="closePopup"/>
+    </van-popup>
+
+    <van-field value="{{ value }}"
+               placeholder="请输入详细地址"
+               border="{{ true }}"
+               label="详细地址"
+               bind:change="addressDetailChange"
+    />
+    <van-field/>
+</van-popup>
+
+
+<view wx:for="{{goodDetails}}" wx:key="index">
+    <van-card
+            num="{{item.amount}}"
+            price="{{item.price}}"
+            title="{{item.title}}"
+            thumb="{{ item.url }}"
+    >
+    </van-card>
+
+</view>
+
+<van-submit-bar
+        price="{{ totalPrice }}"
+        button-text="结算"
+        bind:submit="onSubmit"
+/>

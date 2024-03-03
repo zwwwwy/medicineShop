@@ -4,7 +4,7 @@ const {
     baseUrl, login, swiper, goods,
     search, good_detail, category, cart,
     addCart, changeCart, stepper, freshCart,
-    deleteCart, addOrder
+    deleteCart, addOrder, orderIndex, pay
 } = require("./base");
 
 /**
@@ -79,6 +79,14 @@ function addOrderGood(openid, orderList) {
     return post_request(baseUrl + addOrder, {openid, orderList});
 }
 
+function getOrderIndex(openid) {
+    return post_request(baseUrl + orderIndex, openid)
+}
+
+function paySuccess(openid, data) {
+    return post_request(baseUrl + pay, {openid, data})
+}
+
 module.exports = {
     appLogin,
     getSwiper,
@@ -92,5 +100,7 @@ module.exports = {
     changeCartGood,
     getCartFresh,
     deleteCartGood,
-    addOrderGood
+    addOrderGood,
+    getOrderIndex,
+    paySuccess
 }

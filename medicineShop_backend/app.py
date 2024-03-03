@@ -8,8 +8,9 @@ from mysql.connector import errors
 from tools import no_data, paging
 from read_sql_data import read_sql_data
 from search_sql import search_sql, search_sql_id, search_sql_id_in
-from cart import insert_into_cart, find_cart_info, update_into_cart
+from cart import insert_into_cart, find_cart_info, update_into_cart, delete_cart_item
 from order import find_order_into, insert_into_order, update_into_order
+from goods import update_into_goods
 
 app = Flask(__name__)
 
@@ -244,6 +245,7 @@ def delete_cart():
     update_into_cart(openid, data, database, host, user, password)
     return jsonify({"status": 200, "data": {"result": "删除购物车信息成功"}})
 
+
 # 这里接收前端传入的openid、商品id、数量，并加上时间和订单状态0，插入到order表中
 # 在前端设置了只有选择商品才会结算，所以不用判断post是否为空
 @app.route('/api/order', methods=['POST'])
@@ -253,8 +255,6 @@ def add_order():
     openid = result_dic['openid']
     current_time = time.strftime('%Y%m%d%H%M%S', time.localtime())
     order_list = result_dic['orderList']
-    # result = {current_time: {str(i['goodId']): {"amount": i["amount"], "status": 0} for i in order_list}}
-    # insert_into_order(openid, result, database, host, user, password)
     try:
         result = find_order_into(openid, database, host, user, password)
         print(result)
@@ -274,6 +274,45 @@ def add_order():
     finally:
         print(f"用户{openid}添加订单信息成功")
         return jsonify({"status": 200, "data": {"result": "添加购物车信息成功"}})
+
+
+# 这里向前端的结算页面发送最后一条订单信息，由于订单编号这里是时间，直接去取键里面最大的一条就好了
+# 接收openid，返回带数量的商品详情
+@app.route('/api/order/index', methods=['GET', 'POST'])
+def get_order_index():
+    post = request.values.get('post')
+    openid = post[1:-1]
+    result = find_order_into(openid, database, host, user, password)
+    # 因为本页面正常情况只能通过购物车和立即购买进入，所以不用判断result是否为空
+    data = json.loads(result[0][1])
+    max_key = max(data.keys(), key=int)
+    max_value = data[max_key]
+    print(max_value)
+    result_return = dict()
+    for i in max_value.keys():
+        detail = search_sql_id('goods', 'id', int(i), database, host, user, password)[0]
+        detail['amount'] = max_value[i]['amount']
+        result_return[i] = detail
+
+    return jsonify({"status": 200, "data": {"result": result_return}})
+
+
+# 这里把库存数量减去支付成功的商品数量，然后删掉购物车里对应的商品
+# 接收openid和订单信息，返回支付成功
+@app.route('/api/pay', methods=['POST'])
+def pay():
+    post = request.values.get('post')
+    result_dic = json.loads(post)
+
+    openid = result_dic['openid']
+    data = result_dic['data']
+    print(openid, type(openid))
+    for i in data.values():
+        tmp_result = search_sql_id('goods', "id", int(i['id']), database, host, user, password)[0]
+        tmp_result['stock'] -= i['amount']
+        update_into_goods(tmp_result, database, host, user, password)
+        delete_cart_item(openid, int(i['id']), database, host, user, password)
+    return jsonify({"status": 200, "data": {"result": "支付成功"}})
 
 
 if __name__ == '__main__':

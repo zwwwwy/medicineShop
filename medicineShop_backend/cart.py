@@ -67,4 +67,21 @@ def update_into_cart(openid, data, database, host, user, password):
     connection.close()
 
 
-
+def delete_cart_item(openid, goodId, database, host, user, password):
+    """
+    本函数仅用于删除本项目cart表中元素的内容
+    :param openid:
+    :param goodId:
+    :param database:
+    :param host:
+    :param user:
+    :param password:
+    :return:
+    """
+    result = find_cart_info(openid, database, host, user, password)
+    result = json.loads(result[0][1])
+    if str(goodId) in result.keys():
+        del result[str(goodId)]
+        update_into_cart(openid, result, database, host, user, password)
+    else:
+        return None

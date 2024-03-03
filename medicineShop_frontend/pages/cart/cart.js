@@ -232,8 +232,7 @@ Page({
 
         console.log("用户选择的商品信息为", orderList);
         addOrderGood(getApp().globalData.openid, orderList).then(res => {
-            // console.log(res)
-            // wx.navigateTo({url: `/pages/charge/charge`});
+            wx.navigateTo({url: `/pages/charge/charge`});
         })
 
     },

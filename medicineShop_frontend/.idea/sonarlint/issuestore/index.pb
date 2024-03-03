@@ -101,3 +101,15 @@ H
 pages/charge/charge.wxml,7\7\7779d5852d4f7be034716c35f1936759da9f8df7
 F
 pages/charge/charge.js,f\4\f45bb61db5e65f2df3b56afc8ce3a2cab00d094a
+H
+pages/charge/charge.json,2\9\29e228424f9d8f5c5a6cc1c91be6b2216473fa75
+Z
+*node_modules/@vant/weapp/lib/area/index.js,a\3\a3aa2b0d2d1521b6173b7590093ad6122738f9ef
+H
+pages/charge/areaList.js,e\2\e2f1d59e85bce17c15e6b5ee76bb8d43ebc3c20f
+B
+pages/pay/pay.wxml,4\e\4ee992e68300ec87e6168283b2108b32ff3742ea
+B
+pages/pay/pay.json,c\8\c82113fa200bc460bda35bf1c4ed64dbdb0d605a
+@
+pages/pay/pay.js,4\d\4d7a31ed57cb14b4538c351215b0eace39ff0d54

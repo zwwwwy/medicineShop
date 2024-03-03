@@ -17,6 +17,8 @@ module.exports = {
     freshCart:"/api/cart/fresh", // 用来清理购物车里amount为0的商品
     deleteCart:"/api/cart/delete", // 删除购物车商品
     addOrder:"/api/order", // 添加订单接口
+    orderIndex:"/api/order/index", // 订单结算页接口
+    pay:"/api/pay", // 支付成功接口
 
 
 

@@ -1,11 +1,10 @@
 
-ppython:S117M"RRename this parameter "goodId" to match the regular expression ^[_a-z][a-z0-9_]*$.(№т¤¤8У┴дар1
-python:S117Р"[Rename this local variable "goodAmount" to match the regular expression ^[_a-z][a-z0-9_]*$.(и∙Н╕№    8У┴дар1
-vpython:S117П"WRename this local variable "goodId" to match the regular expression ^[_a-z][a-z0-9_]*$.(Нж╛Щ8У┴дар1
-^python:S1143и"9Remove this "return" statement from this "finally" block.(╘ТГ─■    8У┴дар1
-python:S117│"[Rename this local variable "goodAmount" to match the regular expression ^[_a-z][a-z0-9_]*$.(и∙Н╕№    8У┴дар1
-vpython:S117▓"WRename this local variable "goodId" to match the regular expression ^[_a-z][a-z0-9_]*$.(Нж╛Щ8У┴дар1
-vpython:S117─"WRename this local variable "goodId" to match the regular expression ^[_a-z][a-z0-9_]*$.(Нж╛Щ8У┴дар1
-vpython:S117я"WRename this local variable "goodId" to match the regular expression ^[_a-z][a-z0-9_]*$.(Нж╛Щ8У┴дар1
->python:S125А"Remove this commented out code.(ЄСєВ8У┴дар1
-^python:S1143Ф"9Remove this "return" statement from this "finally" block.(╘ТГ─■    8У┴дар1
+ppython:S117N"RRename this parameter "goodId" to match the regular expression ^[_a-z][a-z0-9_]*$.(№т¤¤8мф▌ер1
+python:S117С"[Rename this local variable "goodAmount" to match the regular expression ^[_a-z][a-z0-9_]*$.(и∙Н╕№    8пф▌ер1
+vpython:S117Р"WRename this local variable "goodId" to match the regular expression ^[_a-z][a-z0-9_]*$.(Нж╛Щ8пф▌ер1
+^python:S1143й"9Remove this "return" statement from this "finally" block.(╘ТГ─■    8пф▌ер1
+python:S117┤"[Rename this local variable "goodAmount" to match the regular expression ^[_a-z][a-z0-9_]*$.(и∙Н╕№    8пф▌ер1
+vpython:S117│"WRename this local variable "goodId" to match the regular expression ^[_a-z][a-z0-9_]*$.(Нж╛Щ8пф▌ер1
+vpython:S117┼"WRename this local variable "goodId" to match the regular expression ^[_a-z][a-z0-9_]*$.(Нж╛Щ8пф▌ер1
+vpython:S117Ё"WRename this local variable "goodId" to match the regular expression ^[_a-z][a-z0-9_]*$.(Нж╛Щ8пф▌ер1
+^python:S1143Ф"9Remove this "return" statement from this "finally" block.(╘ТГ─■    8пф▌ер1

@@ -1,5 +1,5 @@
 // pages/good_detail/good_detail.js
-const {getGoodDetail, addCartGood, getStepper} = require("../../api/index");
+const {getGoodDetail, addCartGood, getStepper, addOrderGood} = require("../../api/index");
 Page({
 
     /**
@@ -65,6 +65,14 @@ Page({
             popup_show: true,
             goToBuy: true
         })
+
+        getStepper(getApp().globalData.openid, this.data.id).then(res => {
+            console.log("库存和购物车数量", res.data)
+            this.setData({
+                stepperMax: res.data.data.result.stock - res.data.data.result.cart_amount
+            })
+        })
+
     },
     // 点击弹出页面的关闭按钮
     popupClose() {
@@ -106,7 +114,11 @@ Page({
             this.setData({
                 goToBuy: false
             })
-            wx.navigateTo({url: "/pages/charge/charge"})
+            const goodList = [{goodId: this.data.id, amount: this.data.goodAmount}]
+            addOrderGood(getApp().globalData.openid, goodList).then(res => {
+                wx.navigateTo({url: `/pages/charge/charge`});
+            })
+
         }
     },
     // 用户在弹出页面修改了商品数量
