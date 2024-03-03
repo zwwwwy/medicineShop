@@ -15,7 +15,9 @@ Page({
         outerPopupShow: false,
         address: "请选择地址",
         totalPrice: 0,
-        showPay:false
+        showPay:false,
+        address1:false,
+        address2:false,
 
     },
 
@@ -57,11 +59,11 @@ Page({
         const names = event.detail.values.map(value => value.name);
         const combinedName = names.join('');
         console.log("用户在地址栏选择的是：", combinedName);
-        this.setData({addressShort: combinedName, popupShow: false, address: combinedName});
+        this.setData({addressShort: combinedName, popupShow: false, address: combinedName, address1:true});
     },
     addressDetailChange(event) {
         console.log("用户输入的详细地址是：", event.detail);
-        this.setData({address: this.data.addressShort + event.detail});
+        this.setData({address: this.data.addressShort + event.detail, address2:true});
 
     },
     showPopup() {

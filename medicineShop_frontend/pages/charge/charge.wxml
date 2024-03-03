@@ -30,6 +30,14 @@
 
 <van-submit-bar
         price="{{ totalPrice }}"
-        button-text="结算"
+        button-text="去支付"
         bind:submit="onSubmit"
+        wx:if="{{address1 && address2}}"
 />
+<van-submit-bar
+        price="{{ totalPrice }}"
+        button-text="请填写地址"
+        disabled
+        wx:else
+/>
+
