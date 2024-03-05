@@ -6,6 +6,8 @@
     "pages/user/user",
     "pages/grid/communication/communication",
     "pages/grid/information/information",
+    "pages/grid/unReceived/unReceived",
+    "pages/grid/allOrder/allOrder",
     "pages/search/search",
     "pages/search_good/search_good",
     "pages/good_detail/good_detail",

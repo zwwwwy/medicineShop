@@ -21,18 +21,6 @@
     </swiper>
 
 
-    <view class="nav">
-        <van-grid column-num="2">
-            <block wx:for="{{ navData }}" wx:key="index">
-                <van-grid-item
-                        icon="{{ item.icon }}"
-                        text="{{ item.text }}"
-                        link-type="navigateTo"
-                        url="{{ item.url }}"
-                />
-            </block>
-        </van-grid>
-    </view>
     <!--上面几行是宫格的导航栏-->
 
     <goodsList goodsData="{{ goodsData }}"></goodsList>

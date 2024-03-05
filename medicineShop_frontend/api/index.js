@@ -4,7 +4,8 @@ const {
     baseUrl, login, swiper, goods,
     search, good_detail, category, cart,
     addCart, changeCart, stepper, freshCart,
-    deleteCart, addOrder, orderIndex, pay
+    deleteCart, addOrder, orderIndex, pay,
+    order
 } = require("./base");
 
 /**
@@ -79,12 +80,19 @@ function addOrderGood(openid, orderList) {
     return post_request(baseUrl + addOrder, {openid, orderList});
 }
 
+// 获取订单结算页的信息
 function getOrderIndex(openid) {
     return post_request(baseUrl + orderIndex, openid)
 }
 
-function paySuccess(openid, data) {
-    return post_request(baseUrl + pay, {openid, data})
+// 向后端发送支付信息
+function payInfo(openid, data, orderId, orderStatus, address) {
+    return post_request(baseUrl + pay, {openid, data, orderId, orderStatus, address})
+}
+
+// 获取status状态的订单信息，status可以取值为'all, -1, 0, 1, 2, 3
+function getOrder(openid, status) {
+    return post_request(baseUrl + order, {openid, status})
 }
 
 module.exports = {
@@ -102,5 +110,6 @@ module.exports = {
     deleteCartGood,
     addOrderGood,
     getOrderIndex,
-    paySuccess
+    payInfo,
+    getOrder
 }

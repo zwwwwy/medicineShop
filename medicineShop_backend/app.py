@@ -9,7 +9,7 @@ from tools import no_data, paging
 from read_sql_data import read_sql_data
 from search_sql import search_sql, search_sql_id, search_sql_id_in
 from cart import insert_into_cart, find_cart_info, update_into_cart, delete_cart_item
-from order import find_order_into, insert_into_order, update_into_order
+from order import find_order_info, insert_into_order, update_into_order
 from goods import update_into_goods
 
 app = Flask(__name__)
@@ -202,10 +202,10 @@ def get_stepper():
     result_cart = find_cart_info(openid, database, host, user, password)
 
     # 这里是防止在购物车没有查询的商品时报错
-    result_cart = json.loads(result_cart[0][1])
     if not result_cart:
         return_result = {"stock": stock, "cart_amount": 0}
     else:
+        result_cart = json.loads(result_cart[0][1])
         print("用户的购物车信息是", result_cart)
         if str(goodId) not in result_cart.keys():
             cart_amount = 0
@@ -256,14 +256,14 @@ def add_order():
     current_time = time.strftime('%Y%m%d%H%M%S', time.localtime())
     order_list = result_dic['orderList']
     try:
-        result = find_order_into(openid, database, host, user, password)
-        print(result)
+        result = find_order_info(openid, database, host, user, password)
         if result:
             data = json.loads(result[0][1])
             data[current_time] = {str(i['goodId']): {"amount": i["amount"], "status": 0} for i in order_list}
             update_into_order(openid, data, database, host, user, password)
         else:
             data = {current_time: {str(i['goodId']): {"amount": i["amount"], "status": 0} for i in order_list}}
+            print(data)
             insert_into_order(openid, data, database, host, user, password)
     except errors.ProgrammingError as e:
         if e.errno == 1054:
@@ -282,23 +282,23 @@ def add_order():
 def get_order_index():
     post = request.values.get('post')
     openid = post[1:-1]
-    result = find_order_into(openid, database, host, user, password)
+    result = find_order_info(openid, database, host, user, password)
     # 因为本页面正常情况只能通过购物车和立即购买进入，所以不用判断result是否为空
     data = json.loads(result[0][1])
     max_key = max(data.keys(), key=int)
     max_value = data[max_key]
-    print(max_value)
     result_return = dict()
     for i in max_value.keys():
         detail = search_sql_id('goods', 'id', int(i), database, host, user, password)[0]
         detail['amount'] = max_value[i]['amount']
         result_return[i] = detail
 
-    return jsonify({"status": 200, "data": {"result": result_return}})
+    return jsonify({"status": 200, "data": {"result": result_return, "orderId": max_key}})
 
 
 # 这里把库存数量减去支付成功的商品数量，然后删掉购物车里对应的商品
 # 接收openid和订单信息，返回支付成功
+# 2024.3.4，还要接收订单号和支付状态，若支付失败，删除该笔订单，若支付成功，添加地址信息
 @app.route('/api/pay', methods=['POST'])
 def pay():
     post = request.values.get('post')
@@ -306,14 +306,41 @@ def pay():
 
     openid = result_dic['openid']
     data = result_dic['data']
-    print(openid, type(openid))
-    for i in data.values():
-        tmp_result = search_sql_id('goods', "id", int(i['id']), database, host, user, password)[0]
-        tmp_result['stock'] -= i['amount']
-        update_into_goods(tmp_result, database, host, user, password)
-        delete_cart_item(openid, int(i['id']), database, host, user, password)
-    return jsonify({"status": 200, "data": {"result": "支付成功"}})
+    orderId = result_dic['orderId']
+    orderStatus = result_dic['orderStatus']
+    address = result_dic['address']
+    if orderStatus == 1:  # 支付成功
+        # for循环内进行更新库存和购物车的操作
+        for i in data.values():
+            tmp_result = search_sql_id('goods', "id", int(i['id']), database, host, user, password)[0]
+            tmp_result['stock'] -= i['amount']
+            update_into_goods(tmp_result, database, host, user, password)
+            delete_cart_item(openid, int(i['id']), database, host, user, password)
 
+        order_dic = json.loads(find_order_info(openid, database, host, user, password)[0][1])
+        order_dic[orderId]['status'] = 1
+        order_dic[orderId]['address'] = address
+        update_into_order(openid, order_dic, database, host, user, password)
+        return jsonify({"status": 200, "data": {"result": "支付成功"}})
+    else:  # 支付失败
+        order_dic = json.loads(find_order_info(openid, database, host, user, password)[0][1])
+        order_dic[orderId]['status'] = -1
+        order_dic[orderId]['address'] = address
+        update_into_order(openid, order_dic, database, host, user, password)
+        return jsonify({"status": 200, "data": {"result": "支付失败"}})
+
+
+# 接收openid和订单状态，返回用户处于该状态的所有订单
+@app.route('/api/order/list', methods=['GET', 'POST'])
+def order():
+    post = request.values.get('post')
+    post = json.loads(post)
+    openid = post['openid']
+    status = post['status']
+
+    all_order = find_order_info(openid, database, host, user, password)
+    print(all_order)
+    return jsonify({"status": 200, "data": {"result": "支付失败"}})
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", debug=True)

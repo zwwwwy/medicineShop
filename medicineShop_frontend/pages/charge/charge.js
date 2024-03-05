@@ -14,10 +14,11 @@ Page({
         addressShort: "请选择省市县",
         outerPopupShow: false,
         address: "请选择地址",
+        addressDetail: "",
         totalPrice: 0,
-        showPay:false,
-        address1:false,
-        address2:false,
+        showPay: false,
+        address1: false,
+        address2: false,
 
     },
 
@@ -59,11 +60,16 @@ Page({
         const names = event.detail.values.map(value => value.name);
         const combinedName = names.join('');
         console.log("用户在地址栏选择的是：", combinedName);
-        this.setData({addressShort: combinedName, popupShow: false, address: combinedName, address1:true});
+        this.setData({
+            addressShort: combinedName,
+            popupShow: false,
+            address: combinedName + this.data.addressDetail,
+            address1: true
+        });
     },
     addressDetailChange(event) {
         console.log("用户输入的详细地址是：", event.detail);
-        this.setData({address: this.data.addressShort + event.detail, address2:true});
+        this.setData({address: this.data.addressShort + event.detail, addressDetail: event.detail, address2: true});
 
     },
     showPopup() {
@@ -79,10 +85,10 @@ Page({
     outerPopupClose() {
         this.setData({outerPopupShow: false});
     },
-    onSubmit(){
+    onSubmit() {
         console.log("用户点击了提交按钮");
         wx.navigateTo({
-            url: '/pages/pay/pay',
+            url: '/pages/pay/pay?address='+this.data.address,
         })
     },
 

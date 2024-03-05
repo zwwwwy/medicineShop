@@ -28,7 +28,5 @@ goods.json,4\1\4175eca3f363b30bf83464a6c1262299fe8d9abf
 order.py,d\6\d6d513fa80ee5705b55edab724a2a8a8ee93a7ec
 7
 test.py,a\3\a36e355ddb203d7d4133221f339dc406cb9f480f
-7
-good.py,c\c\cc6d7976150f5186362ef2a6b0ddd206353fbda3
 8
 goods.py,9\8\98a2f9c0473498c0a8a2d91fcccbe22a446adf6c

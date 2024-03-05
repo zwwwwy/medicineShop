@@ -9,8 +9,15 @@
     "miniprogram": {
       "list": [
         {
-          "name": "pages/pay/pay",
-          "pathName": "pages/pay/pay",
+          "name": "pages/grid/allOrder/allOrder",
+          "pathName": "pages/grid/allOrder/allOrder",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/user/user",
+          "pathName": "pages/user/user",
           "query": "",
           "launchMode": "default",
           "scene": null

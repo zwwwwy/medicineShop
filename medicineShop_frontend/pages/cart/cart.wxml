@@ -15,13 +15,15 @@
             </view>
             <van-cell-group class="info">
                 <view>
+                    <view class="titleFather">
+                        <view class="title" bind:tap="changePage" data-id="{{item.id}}">
+                            {{item.title}}
+                        </view>
 
-                    <view class="title" bind:tap="changePage" data-id="{{item.id}}">
-                        {{item.title}}
                     </view>
 
                     <view class="price">
-                        <view style="margin-top:auto">
+                        <view>
                             ￥<text style="font-size:50rpx">{{item.price}}</text>
                         </view>
                         <van-stepper max="{{item.stock}}" min="0" value="{{ item.amount }}" async-change

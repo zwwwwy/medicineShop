@@ -1,1 +1,22 @@
-/* pages/user/user.wxss */
+.userInfo {
+    display: flex;
+    align-items: center;
+    height: 200rpx;
+    background-color: white;
+    margin-left: 20rpx;
+}
+
+.userInfo .userAvatar {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 200rpx;
+    height: 200rpx;
+    background-color: dodgerblue;
+    border-radius: 50%;
+}
+
+.userInfo .userName {
+    width: 60%;
+    margin-left: 20rpx;
+}

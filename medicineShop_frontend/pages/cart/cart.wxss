@@ -15,9 +15,12 @@
     border-radius: 10px;
     height: 230rpx;
     margin-top: 15rpx;
+    position: relative;
 }
 
-
+.item .titleFather{
+    height: 140rpx;
+}
 .item .title {
     font-size: 15px;
     color: black;
@@ -29,7 +32,6 @@
     margin-left: 10rpx;
     margin-right: 10rpx;
     margin-bottom: 25rpx;
-
 }
 
 .item .info {
@@ -39,14 +41,14 @@
 
 }
 
-.item .price {
-    margin-bottom: auto;
+.item .info .price {
+    margin-top: auto; /* 将价格部分向上推至最后一行 */
     display: flex;
     justify-content: space-between;
     color: red;
 }
 
-.item .price .stepper {
+.item .info .price .stepper {
     margin-top: auto;
     margin-right: 10rpx;
 }

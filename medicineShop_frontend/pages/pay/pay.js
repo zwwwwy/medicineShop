@@ -1,4 +1,4 @@
-const {getOrderIndex, paySuccess} = require("../../api/index")
+const {getOrderIndex, payInfo} = require("../../api/index")
 
 Page({
 
@@ -9,12 +9,17 @@ Page({
         success: false,
         fail: false,
         goodDetails: [],
+        orderId:0,
+        address: "",
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
+        this.setData({
+            address: options.address,
+        })
 
     },
 
@@ -31,9 +36,9 @@ Page({
     onShow() {
         getOrderIndex(getApp().globalData.openid).then(res => {
             this.setData({
-                goodDetails: res.data.data.result
+                goodDetails: res.data.data.result,
+                orderId: res.data.data.orderId
             })
-            console.log(this.data.goodDetails)
         })
     },
 
@@ -42,7 +47,7 @@ Page({
         this.setData({
             success: true
         })
-        paySuccess(getApp().globalData.openid, this.data.goodDetails).then(res => {
+        payInfo(getApp().globalData.openid, this.data.goodDetails, this.data.orderId, 1, this.data.address).then(res => {
             console.log(res)
         })
     },
@@ -50,6 +55,9 @@ Page({
         console.log('支付失败')
         this.setData({
             fail: true
+        })
+        payInfo(getApp().globalData.openid, this.data.goodDetails, this.data.orderId, -1, this.data.address).then(res => {
+            console.log(res)
         })
     },
     hasPaid() {

@@ -19,6 +19,7 @@ module.exports = {
     addOrder:"/api/order", // 添加订单接口
     orderIndex:"/api/order/index", // 订单结算页接口
     pay:"/api/pay", // 支付成功接口
+    order:"/api/order/list", // 订单接口
 
 
 

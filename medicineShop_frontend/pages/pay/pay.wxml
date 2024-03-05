@@ -11,7 +11,7 @@
 
 <van-dialog
         title="支付失败"
-        message="结算页的商品将会送回购物车，点击确定返回购物车"
+        message="支付失败，将返回购物车"
         show="{{ fail }}"
         bind:close="toCart"
 />
