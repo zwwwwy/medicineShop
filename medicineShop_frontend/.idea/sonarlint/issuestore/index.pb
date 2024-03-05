@@ -129,3 +129,13 @@ S
 #pages/grid/unReceived/unReceived.js,d\5\d50de9678f9c39902034675cae5038a0d4cb0f8f
 U
 %pages/grid/unReceived/unReceived.json,2\b\2b9354b74b46fc0e996e005800e2f00fcf2c1726
+S
+#components/orderList/orderList.wxml,d\3\d336a8a6af0db5c39282e52b1a5f7b09f513ee11
+Q
+!pages/grid/allOrder/allOrder.json,f\7\f79ed77f46c1d086813224b8af6f123b47ff676d
+Q
+!components/orderList/orderList.js,0\6\06df503dbba7469248b178ba1c36aac943de536d
+S
+#components/orderList/orderList.wxss,2\4\24284458f6b5c9922603d893d378bbc256254890
+J
+pages/express/express.wxml,3\6\369d17292707d396c239ba5425e8abc1246b83cf

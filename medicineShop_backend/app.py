@@ -318,13 +318,15 @@ def pay():
             delete_cart_item(openid, int(i['id']), database, host, user, password)
 
         order_dic = json.loads(find_order_info(openid, database, host, user, password)[0][1])
-        order_dic[orderId]['status'] = 1
+        for i in order_dic[orderId].keys():
+            order_dic[orderId][i]['status'] = 1
         order_dic[orderId]['address'] = address
         update_into_order(openid, order_dic, database, host, user, password)
         return jsonify({"status": 200, "data": {"result": "支付成功"}})
     else:  # 支付失败
         order_dic = json.loads(find_order_info(openid, database, host, user, password)[0][1])
-        order_dic[orderId]['status'] = -1
+        for i in order_dic[orderId].keys():
+            order_dic[orderId][i]['status'] = -1
         order_dic[orderId]['address'] = address
         update_into_order(openid, order_dic, database, host, user, password)
         return jsonify({"status": 200, "data": {"result": "支付失败"}})
@@ -338,9 +340,46 @@ def order():
     openid = post['openid']
     status = post['status']
 
-    all_order = find_order_info(openid, database, host, user, password)
-    print(all_order)
-    return jsonify({"status": 200, "data": {"result": "支付失败"}})
+    all_order = json.loads(find_order_info(openid, database, host, user, password)[0][1])
+    # 从大到小把订单号（时间）排序
+    sorted_key = sorted(all_order.keys(), key=int, reverse=True)
+
+    return_dic = dict()
+    idx = 0
+    if status == 'all':
+        for order_id in sorted_key:
+            all_order_keys = list(all_order[order_id].keys())
+            address = all_order[order_id]['address']
+            all_order_keys.remove('address')
+            for good_id in all_order_keys:
+                tmp_amount = all_order[order_id][good_id]['amount']
+                tmp_status = all_order[order_id][good_id]['status']
+                tmp_detail = search_sql_id('goods', 'id', int(good_id), database, host, user, password)[0]
+                tmp_title = tmp_detail['title']
+                tmp_url = tmp_detail['url']
+                tmp_price = tmp_detail['price']
+                return_dic[idx] = {"id": int(good_id), "title": tmp_title, "url": tmp_url, "price": tmp_price,
+                                   "amount": tmp_amount, "status": tmp_status, "address": address, "orderId": order_id}
+                idx += 1
+    else:
+        for order_id in sorted_key:
+            all_order_keys = list(all_order[order_id].keys())
+            address = all_order[order_id]['address']
+            all_order_keys.remove('address')
+            for good_id in all_order_keys:
+                tmp_status = all_order[order_id][good_id]['status']
+                if tmp_status == status:  # 只筛选出状态符合的订单，status为整数
+                    tmp_amount = all_order[order_id][good_id]['amount']
+                    tmp_detail = search_sql_id('goods', 'id', int(good_id), database, host, user, password)[0]
+                    tmp_title = tmp_detail['title']
+                    tmp_url = tmp_detail['url']
+                    tmp_price = tmp_detail['price']
+                    return_dic[idx] = {"id": int(good_id), "title": tmp_title, "url": tmp_url, "price": tmp_price,
+                                       "amount": tmp_amount, "status": tmp_status, "address": address, "orderId": order_id}
+                    idx += 1
+
+    return jsonify({"status": 200, "data": {"result": return_dic}})
+
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", debug=True)

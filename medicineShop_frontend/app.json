@@ -12,7 +12,8 @@
     "pages/search_good/search_good",
     "pages/good_detail/good_detail",
     "pages/charge/charge",
-    "pages/pay/pay"
+    "pages/pay/pay",
+    "pages/express/express"
   ],
   "window": {
     "navigationBarTextStyle": "black",

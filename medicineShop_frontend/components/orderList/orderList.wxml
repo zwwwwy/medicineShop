@@ -1,0 +1,43 @@
+<view wx:for="{{orderListData}}" wx:key="index">
+    <view class="item">
+        <navigator url="/pages/good_detail/good_detail?id={{item.id}}">
+            <image src="{{item.url}}" class="image"></image>
+        </navigator>
+
+
+        <view class="info">
+
+            <text class="status">
+                <text wx:if="{{item.status===-1}}">支付失败</text>
+                <text wx:elif="{{item.status===0}}">待支付</text>
+                <text wx:elif="{{item.status===1}}">待发货</text>
+                <text wx:elif="{{item.status===2}}">待收货</text>
+                <text wx:elif="{{item.status===3}}">订单完成</text>
+            </text>
+            <text class="orderId">订单编号：{{item.orderId}}</text>
+
+            <navigator url="/pages/good_detail/good_detail?id={{item.id}}">
+                <view class="titleBack">
+                    <text class="title">{{item.title}}</text>
+                </view>
+            </navigator>
+
+            <navigator url="/pages/express/express">
+                <view class="express">点此查看物流信息>></view>
+            </navigator>
+
+            <view class="priceAmount">
+                <view class="price">
+                    ￥<text>{{item.price}}</text>
+                </view>
+
+                <view class="amount">
+                    x{{item.amount}}件
+                </view>
+            </view>
+
+        </view>
+
+
+    </view>
+</view>

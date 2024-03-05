@@ -1,0 +1,69 @@
+.item {
+    background-color: white;
+    width: 98%;
+    margin-left: 1%;
+    height: 230rpx;
+    border-radius: 10rpx;
+    margin-top: 10rpx;
+    display: flex;
+}
+
+.item .image{
+    height:200rpx;
+    width: 200rpx;
+    margin-left: 15rpx;
+    margin-top: 15rpx;
+    border-radius: 10rpx;
+}
+
+.item .info {
+    width: 515rpx;
+    margin-left: 10rpx;
+    margin-right: 10rpx;
+    margin-top: 15rpx;
+}
+
+.item .title{
+    color: black;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-left: 10rpx;
+    margin-right: 10rpx;
+    margin-top: 10rpx;
+
+}
+
+.item .info .priceAmount .price {
+    color: red;
+}
+
+.item .info .priceAmount{
+    display: flex;
+    justify-content: space-between;
+    font-size: 30rpx;
+    margin-top: 5rpx;
+}
+
+.item .info .status {
+    color: white;
+    background-color: red;
+    padding: 5rpx;
+    border-radius: 10px;
+}
+
+.item .info .orderId {
+    margin-left: 10rpx;
+    font-size: 25rpx;
+    text-align: right;
+}
+
+.item .info .titleBack{
+    height: 80rpx;
+}
+.item .info .express {
+    background-color: lightgrey;
+    border-radius: 2px;
+}

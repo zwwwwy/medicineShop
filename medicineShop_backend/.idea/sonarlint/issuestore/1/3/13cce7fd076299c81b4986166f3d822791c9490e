@@ -1,13 +1,13 @@
 
-ppython:S117N"RRename this parameter "goodId" to match the regular expression ^[_a-z][a-z0-9_]*$.(üâıı8¯¤Íåà1
-python:S117‘"[Rename this local variable "goodAmount" to match the regular expression ^[_a-z][a-z0-9_]*$.(¨ù¸üÿÿÿÿ8¯¤Íåà1
-vpython:S117"WRename this local variable "goodId" to match the regular expression ^[_a-z][a-z0-9_]*$.(¦¾™8¯¤Íåà1
-^python:S1143©"9Remove this "return" statement from this "finally" block.(Ô’ƒÄşÿÿÿÿ8¯¤Íåà1
-python:S117´"[Rename this local variable "goodAmount" to match the regular expression ^[_a-z][a-z0-9_]*$.(¨ù¸üÿÿÿÿ8¯¤Íåà1
-vpython:S117³"WRename this local variable "goodId" to match the regular expression ^[_a-z][a-z0-9_]*$.(¦¾™8¯¤Íåà1
-vpython:S117Å"WRename this local variable "goodId" to match the regular expression ^[_a-z][a-z0-9_]*$.(¦¾™8¯¤Íåà1
-vpython:S117ğ"WRename this local variable "goodId" to match the regular expression ^[_a-z][a-z0-9_]*$.(¦¾™8¯¤Íåà1
-^python:S1143”"9Remove this "return" statement from this "finally" block.(Ô’ƒÄşÿÿÿÿ8¯¤Íåà1
-|python:S117µ"XRename this local variable "orderId" to match the regular expression ^[_a-z][a-z0-9_]*$.(¿Òîşÿÿÿÿ8¯¤Íåà1
-{python:S117¶"\Rename this local variable "orderStatus" to match the regular expression ^[_a-z][a-z0-9_]*$.(¬¸õ¶8¯¤Íåà1
-Opython:S1481Ó"*Remove the unused local variable "status".(½ùÀòøÿÿÿÿ8¯¤Íåà1
+ppython:S117N"RRename this parameter "goodId" to match the regular expression ^[_a-z][a-z0-9_]*$.(üâıı8¾ÇËèà1
+python:S117‘"[Rename this local variable "goodAmount" to match the regular expression ^[_a-z][a-z0-9_]*$.(¨ù¸üÿÿÿÿ8¾ÇËèà1
+vpython:S117"WRename this local variable "goodId" to match the regular expression ^[_a-z][a-z0-9_]*$.(¦¾™8¾ÇËèà1
+^python:S1143©"9Remove this "return" statement from this "finally" block.(Ô’ƒÄşÿÿÿÿ8¾ÇËèà1
+python:S117´"[Rename this local variable "goodAmount" to match the regular expression ^[_a-z][a-z0-9_]*$.(¨ù¸üÿÿÿÿ8¾ÇËèà1
+vpython:S117³"WRename this local variable "goodId" to match the regular expression ^[_a-z][a-z0-9_]*$.(¦¾™8¾ÇËèà1
+vpython:S117Å"WRename this local variable "goodId" to match the regular expression ^[_a-z][a-z0-9_]*$.(¦¾™8¾ÇËèà1
+vpython:S117ğ"WRename this local variable "goodId" to match the regular expression ^[_a-z][a-z0-9_]*$.(¦¾™8¾ÇËèà1
+^python:S1143”"9Remove this "return" statement from this "finally" block.(Ô’ƒÄşÿÿÿÿ8¾ÇËèà1
+|python:S117µ"XRename this local variable "orderId" to match the regular expression ^[_a-z][a-z0-9_]*$.(¿Òîşÿÿÿÿ8¾ÇËèà1
+{python:S117¶"\Rename this local variable "orderStatus" to match the regular expression ^[_a-z][a-z0-9_]*$.(¬¸õ¶8¾ÇËèà1
+spython:S3776Ñ"TRefactor this function to reduce its Cognitive Complexity from 16 to the 15 allowed.(ƒÁ¹&8¾ÇËèà1
