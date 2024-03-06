@@ -6,7 +6,7 @@ Page({
 
     },
     onLoad: function (options) {
-    getOrder(getApp().globalData.openid, 1).then(res=>{
+    getOrder(getApp().globalData.openid, [1,2]).then(res=>{
         this.setData({
             orderListData:res.data.data.result
         })

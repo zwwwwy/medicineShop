@@ -143,10 +143,6 @@ J
 pages/express/express.json,a\7\a72c8027c63310f71c2cd2fb5d09a5cbe9747a9f
 H
 pages/express/express.js,4\c\4cc54380ed4ae80aec8df4da5bbed2360ff46806
-Y
-)pages/grid/communication/communication.js,f\6\f68a3f27f79f0cfb733815d6844339b9a759f4a2
-[
-+pages/grid/communication/communication.wxml,3\2\322478d792fb8df017ed88817f6f6415942219ae
 K
 pages/grid/doctor/doctor.js,6\7\67f95429ba61d0d53a3e8c93a8aaab0afd66d26f
 M

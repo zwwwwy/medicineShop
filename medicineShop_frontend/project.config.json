@@ -30,5 +30,6 @@
     "tabIndent": "auto",
     "tabSize": 2
   },
-  "appid": "wx34e821601c300c11"
+  "appid": "wx34e821601c300c11",
+  "simulatorPluginLibVersion": {}
 }

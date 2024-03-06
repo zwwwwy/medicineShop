@@ -376,7 +376,7 @@ def order():
             all_order_keys.remove('address')
             for good_id in all_order_keys:
                 tmp_status = all_order[order_id][good_id]['status']
-                if tmp_status == status:  # 只筛选出状态符合的订单，status为整数
+                if tmp_status == status or tmp_status in status:  # 只筛选出状态符合的订单，status为整数
                     tmp_amount = all_order[order_id][good_id]['amount']
                     tmp_detail = search_sql_id('goods', 'id', int(good_id), database, host, user, password)[0]
                     tmp_title = tmp_detail['title']

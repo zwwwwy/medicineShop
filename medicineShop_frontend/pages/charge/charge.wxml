@@ -23,6 +23,7 @@
             price="{{item.price}}"
             title="{{item.title}}"
             thumb="{{ item.url }}"
+            wx:if="{{item.amount > 0}}"
     >
     </van-card>
 

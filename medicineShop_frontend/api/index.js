@@ -90,7 +90,7 @@ function payInfo(openid, data, orderId, orderStatus, address) {
     return post_request(baseUrl + pay, {openid, data, orderId, orderStatus, address})
 }
 
-// 获取status状态的订单信息，status可以取值为'all, -1, 0, 1, 2, 3
+// 获取status状态的订单信息，status可以取值为'all, -1, 0, 1, 2, 3或包含前文所指数字的列表
 function getOrder(openid, status) {
     return post_request(baseUrl + order, {openid, status})
 }

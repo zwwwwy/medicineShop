@@ -30,6 +30,7 @@ Page({
         })
         console.log("首页载入")
         getSwiper().then(res => {
+            console.log(1111111,res)
             this.setData({
                 swiperData: res.data.data.result
             })
