@@ -1,19 +1,21 @@
-<view class="userInfo">
-    <view class="userAvatar">
-        <text>头像示例,上线后可改为微信头像等</text>
+<view class="userInfoBack">
+    <view class="userInfo">
+        <view class="userAvatar">
+            <text>头像示例,上线后可改为微信头像等</text>
+        </view>
+        <view class="userName">用户名(此处以openid占位)：{{openid}}</view>
     </view>
-    <view class="userName">用户名(此处以openid占位)：{{openid}}</view>
 </view>
 
-    <view class="nav">
-        <van-grid column-num="4">
-            <block wx:for="{{ navData }}" wx:key="index">
-                <van-grid-item
-                        icon="{{ item.icon }}"
-                        text="{{ item.text }}"
-                        link-type="navigateTo"
-                        url="{{ item.url }}"
-                />
-            </block>
-        </van-grid>
-    </view>
+<view class="nav">
+    <van-grid column-num="4">
+        <block wx:for="{{ navData }}" wx:key="index">
+            <van-grid-item
+                    icon="{{ item.icon }}"
+                    text="{{ item.text }}"
+                    link-type="navigateTo"
+                    url="{{ item.url }}"
+            />
+        </block>
+    </van-grid>
+</view>

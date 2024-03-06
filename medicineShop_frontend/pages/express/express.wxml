@@ -1,1 +1,8 @@
 此处将显示从合作的物流公司获取的物流信息
+<van-steps steps="{{ steps }}" active="{{ stepStatus }}" />
+<van-steps
+  steps="{{ express }}"
+  active="{{ expressStatus }}"
+  direction="vertical"
+  active-color="#ee0a24"
+/>

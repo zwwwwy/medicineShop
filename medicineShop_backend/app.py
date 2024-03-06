@@ -349,6 +349,10 @@ def order():
     if status == 'all':
         for order_id in sorted_key:
             all_order_keys = list(all_order[order_id].keys())
+            # 用户在结算页直接退出后没有订单信息，无效，需要删掉
+            if 'address' not in all_order[order_id].keys():
+                del all_order[order_id]
+                continue
             address = all_order[order_id]['address']
             all_order_keys.remove('address')
             for good_id in all_order_keys:
@@ -364,6 +368,9 @@ def order():
     else:
         for order_id in sorted_key:
             all_order_keys = list(all_order[order_id].keys())
+            if 'address' not in all_order[order_id].keys():
+                del all_order[order_id]
+                continue
             address = all_order[order_id]['address']
             all_order_keys.remove('address')
             for good_id in all_order_keys:

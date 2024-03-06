@@ -1,3 +1,6 @@
+// 有个bug，在修改步进器的时候，总价的计算策略是依次把每个商品的amount和price相乘然后分别加总
+// 想到的办法是找是否cartDetail中有一个checked的属性？
+// 如果没有的话加上这个属性，然后在计算总价的时候只计算checked为true的商品，在复选框或全选状态改变的时候相应的改变checked
 const {getCart, getGoodDetail, getCartFresh, changeCartGood, addOrderGood} = require("../../api/index")
 const {wxLogin} = require("../../utils/login")
 
@@ -13,7 +16,7 @@ Page({
         sumPrice: 0,
         nodata: false,
         selectAll: false,
-        orderList: []
+        orderList: []  // 列表，仅存储选中的商品id
     },
 
     /**
@@ -103,9 +106,14 @@ Page({
         // 在载入购物车页面时设置了先登录（只有在这里才设置了）
         // 所以这里不必担心出现没登陆的情况
         changeCartGood(getApp().globalData.openid, this.properties.cartDetail[index].id, this.properties.cartDetail[index].amount).then(res => {
-            let totalCost = this.properties.cartDetail.reduce((total, item) => {
-                return total + item.amount * item.price;
-            }, 0);
+            // 这里遍历商品列表，取checked为true的商品的总价相加，i是索引
+            // checked是在选择框选中的时候才被添加到cartDetail中的，被选择之前不用计算价格，所以不考虑
+            let totalCost = 0
+            for (let i in this.data.cartDetail) {
+                if (this.data.cartDetail[i].checked) {
+                    totalCost += this.data.cartDetail[i].amount * this.data.cartDetail[i].price
+                }
+            }
             console.log("购物车商品总价为：", totalCost);
 
             this.setData({
@@ -150,6 +158,7 @@ Page({
         this.setData({
             [`cartDetail[${index}].checked`]: event.detail,
         });
+        console.log(this.data.cartDetail)
         if (event.detail === true) {
             // 如果复选框被选中，将商品的id添加到 orderList中
             this.setData({

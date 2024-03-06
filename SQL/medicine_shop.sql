@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主机： 127.0.0.1
--- 生成日期： 2024-03-05 04:46:31
+-- 生成日期： 2024-03-05 10:20:29
 -- 服务器版本： 10.4.32-MariaDB
 -- PHP 版本： 8.2.12
 
@@ -37,7 +37,32 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`openid`, `infoJson`) VALUES
-('onXxF6Y7VAsxPZ76WJ5MzqidFKCQ', '{\"2\": 1, \"4\": 1}');
+('onXxF6Y7VAsxPZ76WJ5MzqidFKCQ', '{}');
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `doctorinfo`
+--
+
+CREATE TABLE `doctorinfo` (
+  `id` int(11) NOT NULL,
+  `name` text NOT NULL,
+  `gender` varchar(4) NOT NULL,
+  `age` int(11) NOT NULL,
+  `skill` text NOT NULL,
+  `avatar` text NOT NULL,
+  `info` text NOT NULL,
+  `contact` text NOT NULL,
+  `tag` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='医生信息';
+
+--
+-- 转存表中的数据 `doctorinfo`
+--
+
+INSERT INTO `doctorinfo` (`id`, `name`, `gender`, `age`, `skill`, `avatar`, `info`, `contact`, `tag`) VALUES
+(1, '马化疼', '男', 52, '擅长起死回生', '\"https://头像地址\"', '这是个人信息', '这是联系方式', '外科');
 
 -- --------------------------------------------------------
 
@@ -62,9 +87,9 @@ CREATE TABLE `goods` (
 
 INSERT INTO `goods` (`id`, `title`, `price`, `url`, `tag`, `details`, `topimage`, `stock`) VALUES
 (1, '999三九感冒灵颗粒10g*9袋感冒药解热镇痛用于感冒引起的头痛发热鼻塞流涕咽痛', 14.9, 'https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good1.jpg', '感冒药', 'https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good1.jpg&&https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good1.jpg&&https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good1.jpg', 'https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good1.jpg&&https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good1.jpg&&https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good1.jpg', 24),
-(2, '方盛 蒲地蓝消炎片54片清热解毒抗炎消肿用于疖肿咽炎扁桃腺炎感冒咽喉痛解热镇痛中成药', 8, 'https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good2.jpg', '消炎药', 'https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good2.jpg&&https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good2.jpg&&https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good2.jpg', 'https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good2.jpg&&https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good2.jpg&&https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good2.jpg', 12),
+(2, '方盛 蒲地蓝消炎片54片清热解毒抗炎消肿用于疖肿咽炎扁桃腺炎感冒咽喉痛解热镇痛中成药', 8, 'https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good2.jpg', '消炎药', 'https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good2.jpg&&https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good2.jpg&&https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good2.jpg', 'https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good2.jpg&&https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good2.jpg&&https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good2.jpg', 11),
 (3, '东北制药 维生素C片100mg*100片 预防坏血病急慢性传染疾病紫癜', 2.5, 'https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good3.jpg', '维生素', 'https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good3.jpg&&https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good3.jpg&&https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good3.jpg', 'https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good3.jpg&&https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good3.jpg&&https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good3.jpg', 0),
-(4, '北京同仁堂 六味地黄丸（水蜜丸）360丸 本品用于肾阴亏损 头晕耳鸣 腰膝酸软 骨蒸潮热 盗汗遗精', 13.8, 'https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good4.jpg', '中成药', 'https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good4.jpg&&https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good4.jpg&&https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good4.jpg', 'https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good4.jpg&&https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good4.jpg&&https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good4.jpg', 9),
+(4, '北京同仁堂 六味地黄丸（水蜜丸）360丸 本品用于肾阴亏损 头晕耳鸣 腰膝酸软 骨蒸潮热 盗汗遗精', 13.8, 'https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good4.jpg', '中成药', 'https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good4.jpg&&https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good4.jpg&&https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good4.jpg', 'https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good4.jpg&&https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good4.jpg&&https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good4.jpg', 8),
 (5, '葵花 蒲地蓝消炎片 0.24g*40片 清热解毒 抗炎消肿 用于 疖肿 咽炎 扁桃腺炎', 9.8, 'https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good5.jpg', '消炎药', 'https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good5.jpg&&https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good5.jpg&&https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good5.jpg', 'https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good5.jpg&&https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good5.jpg&&https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good5.jpg', 11),
 (6, '正妥 穿心莲内酯分散片 50mg*24片 清热解毒 抗菌消炎cc 1盒装', 3.7, 'https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good6.jpg', '消炎药', 'https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good6.jpg&&https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good6.jpg&&https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good6.jpg', 'https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good6.jpg&&https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good6.jpg&&https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good6.jpg', 186),
 (7, '感康 复方氨酚烷胺片12片 成人感冒发热头痛鼻塞流涕打喷嚏咽痛含对乙酰氨基酚', 12, 'https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good7.jpg', '感冒药', 'https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good7.jpg&&https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good7.jpg&&https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good7.jpg', 'https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good7.jpg&&https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good7.jpg&&https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/good7.jpg', 1235),
@@ -90,7 +115,7 @@ CREATE TABLE `orderinfo` (
 --
 
 INSERT INTO `orderinfo` (`openid`, `orderInfo`) VALUES
-('onXxF6Y7VAsxPZ76WJ5MzqidFKCQ', '{\"20240305114429\": {\"1\": {\"amount\": 1, \"status\": 0}, \"4\": {\"amount\": 3, \"status\": 0}, \"status\": 1, \"address\": \"北京市北京市东城区2134\"}}');
+('onXxF6Y7VAsxPZ76WJ5MzqidFKCQ', '{\"20240305123226\": {\"2\": {\"amount\": 1, \"status\": -1}, \"4\": {\"amount\": 1, \"status\": -1}, \"address\": \"北京市北京市东城区12335\"}, \"20240305123247\": {\"2\": {\"amount\": 1, \"status\": 1}, \"4\": {\"amount\": 1, \"status\": 1}, \"address\": \"河北省石家庄市长安区1234256\"}}');
 
 -- --------------------------------------------------------
 
@@ -123,6 +148,12 @@ INSERT INTO `swiper` (`id`, `url`, `name`) VALUES
 --
 ALTER TABLE `cart`
   ADD PRIMARY KEY (`openid`);
+
+--
+-- 表的索引 `doctorinfo`
+--
+ALTER TABLE `doctorinfo`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- 表的索引 `goods`

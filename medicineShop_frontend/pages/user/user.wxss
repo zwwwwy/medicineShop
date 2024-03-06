@@ -1,8 +1,10 @@
-.userInfo {
-    display: flex;
-    align-items: center;
+.userInfoBack {
     height: 200rpx;
     background-color: white;
+}
+.userInfoBack .userInfo {
+    display: flex;
+    align-items: center;
     margin-left: 20rpx;
 }
 
