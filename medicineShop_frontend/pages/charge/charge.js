@@ -88,7 +88,7 @@ Page({
     onSubmit() {
         console.log("用户点击了提交按钮");
         wx.navigateTo({
-            url: '/pages/pay/pay?address='+this.data.address,
+            url: '/pages/pay/pay?address=' + this.data.address,
         })
     },
 
@@ -96,6 +96,7 @@ Page({
      * 生命周期函数--监听页面隐藏
      */
     onHide() {
+        console.log(111111)
 
     },
 
@@ -103,7 +104,9 @@ Page({
      * 生命周期函数--监听页面卸载
      */
     onUnload() {
-
+        this.setData({
+            goodDetails: []
+        })
     },
 
     /**
