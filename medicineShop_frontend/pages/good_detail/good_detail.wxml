@@ -31,6 +31,9 @@
         <text>{{ goodDetail.title }}</text>
 
     </view>
+    <view class="factory">
+        <text>厂家：{{ goodDetail.factory }}</text>
+    </view>
 </view>
 
         <!--<view class="details">-->

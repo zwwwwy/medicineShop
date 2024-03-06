@@ -5,7 +5,7 @@ const {
     search, good_detail, category, cart,
     addCart, changeCart, stepper, freshCart,
     deleteCart, addOrder, orderIndex, pay,
-    order
+    order, doctor, doctorDetail, info
 } = require("./base");
 
 /**
@@ -95,6 +95,18 @@ function getOrder(openid, status) {
     return post_request(baseUrl + order, {openid, status})
 }
 
+// 获取对应tag的医生信息
+function getDoctor(tag, page) {
+    return post_request(baseUrl + doctor+'/'+page, tag)
+}
+
+function getDoctorDetail(id) {
+    return post_request(baseUrl + doctorDetail, id)
+}
+
+function postInfo(openid, data){
+    return post_request(baseUrl + info, {"openid":openid, "data":data})
+}
 module.exports = {
     appLogin,
     getSwiper,
@@ -111,5 +123,8 @@ module.exports = {
     addOrderGood,
     getOrderIndex,
     payInfo,
-    getOrder
+    getOrder,
+    getDoctor,
+    getDoctorDetail,
+    postInfo
 }

@@ -7,6 +7,7 @@
             <van-sidebar-item title="感冒药"/>
             <van-sidebar-item title="消炎药"/>
             <van-sidebar-item title="维生素"/>
+            <van-sidebar-item title="冷链"/>
             <van-sidebar-item title="其他"/>
             <!--            后续如需添加其他内容，记得在js文件里的category_name里也进行修改-->
         </van-sidebar>

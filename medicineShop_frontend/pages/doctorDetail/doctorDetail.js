@@ -1,18 +1,24 @@
-// pages/grid/communication/communication.js
+// pages/doctorDetail/doctorDetail.js
+const {getDoctorDetail} = require("../../api/index");
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+      doctor: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    getDoctorDetail({id: options.id}).then(res => {
+      console.log(res.data.data.result[0])
+        this.setData({
+            doctor: res.data.data.result[0]
+        })
+    })
   },
 
   /**

@@ -1,0 +1,16 @@
+<view class="head">
+    <image class="avatar" src="{{doctor.avatar}}"></image>
+   <view class="info">
+       <view class="name">姓名：{{doctor.name}}</view>
+       <view class="gender">性别：{{doctor.gender}}</view>
+       <view class="age">年龄：{{doctor.age}}</view>
+       <view class="skill">专长：{{doctor.skill}}</view>
+   </view>
+</view>
+
+<view class="other">
+    <block class="text">
+        <view class="info">个人简介：{{doctor.info}}</view>
+        <view class="contact">联系方式：{{doctor.contact}}</view>
+    </block>
+</view>

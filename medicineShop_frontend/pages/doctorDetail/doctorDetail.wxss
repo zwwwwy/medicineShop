@@ -1,0 +1,29 @@
+.head {
+    display: flex;
+}
+
+.head .avatar{
+    background-color: cyan;
+    width: 300rpx;
+    height: 300rpx;
+    margin-left: 20rpx;
+    margin-top: 10rpx;
+    margin-right: 20rpx;
+}
+
+.head .info{
+    background-color: white;
+    border-radius: 10rpx;
+    width: 100%;
+    margin-right: 20rpx;
+    padding: 10rpx;
+    margin-top: 10rpx;
+}
+
+.other {
+    background-color: white;
+    width: 95%;
+    margin-left: 2.5%;
+    margin-top: 20rpx;
+    border-radius: 10rpx;
+}

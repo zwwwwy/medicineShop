@@ -9,7 +9,7 @@ Page({
         activeKey: 0,
         goodsData: [],
         page: 1,
-        category_name: ["中成药", "感冒药", "消炎药", "维生素", "其他"],
+        category_name: ["中成药", "感冒药", "消炎药", "维生素", "冷链", "其他"],
         current_category: "中成药"
     },
     onChange(event) {
@@ -19,7 +19,7 @@ Page({
             current_category: this.data.category_name[event.detail]
         });
         console.log("用户点击的导航页内容为：", this.data.current_category)
-        this.http(this.data.current_category,this.data.page);
+        this.http(this.data.current_category, this.data.page);
     },
     http(tag, page) {
         getCategory(tag, page).then(res => {
@@ -43,7 +43,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        this.http(this.data.current_category,this.data.page)
+        this.http(this.data.current_category, this.data.page)
 
     },
 
@@ -90,7 +90,7 @@ Page({
         this.setData({
             page: this.data.page + 1
         })
-        this.http(this.data.current_category,this.data.page)
+        this.http(this.data.current_category, this.data.page)
 
     },
 

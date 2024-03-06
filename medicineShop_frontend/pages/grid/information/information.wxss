@@ -1,1 +1,24 @@
-/* pages/grid/information/information.wxss */
+.radio {
+    background-color: white;
+}
+
+.radio .ques {
+    margin-left: 20rpx;
+}
+
+.radio .ans {
+    margin-left: 20rpx;
+    margin-top: 20rpx;
+
+}
+
+.buttonBack{
+    background-color: white;
+    height: 150rpx;
+    display: flex;
+}
+
+.buttonBack .button {
+    margin: auto;
+    display: block;
+}

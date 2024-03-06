@@ -18,8 +18,8 @@ Page({
             },
             {
                 icon: "https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/doctor.png",
-                text: "远程问诊",
-                url: "/pages/grid/communication/communication"
+                text: "医生信息",
+                url: "/pages/grid/doctor/doctor"
             },
             {
                 icon: "https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/info.png",

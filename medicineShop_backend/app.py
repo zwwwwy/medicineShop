@@ -11,6 +11,7 @@ from search_sql import search_sql, search_sql_id, search_sql_id_in
 from cart import insert_into_cart, find_cart_info, update_into_cart, delete_cart_item
 from order import find_order_info, insert_into_order, update_into_order
 from goods import update_into_goods
+from user_info import insert_into_info, find_info, update_info
 
 app = Flask(__name__)
 
@@ -382,10 +383,54 @@ def order():
                     tmp_url = tmp_detail['url']
                     tmp_price = tmp_detail['price']
                     return_dic[idx] = {"id": int(good_id), "title": tmp_title, "url": tmp_url, "price": tmp_price,
-                                       "amount": tmp_amount, "status": tmp_status, "address": address, "orderId": order_id}
+                                       "amount": tmp_amount, "status": tmp_status, "address": address,
+                                       "orderId": order_id}
                     idx += 1
 
     return jsonify({"status": 200, "data": {"result": return_dic}})
+
+
+@app.route('/api/doctor/<int:page>', methods=['GET', 'POST'])
+def communication(page):
+    post = request.values.get('post')
+    # print(post)
+    tag = json.loads(post)['tag']
+    dic = search_sql_id('doctorinfo', 'tag', tag, database, host, user, password)
+    page_result = paging(dic)
+    doctor = next((doctor for doctor in page_result if doctor['page'] == page), None)
+    if doctor:
+        print(f"用户获取医生列表成功，当前页数为{page}")
+        return jsonify(doctor)
+    else:
+        print(f"用户获取医生列表失败，当前页数为{page}")
+        return jsonify(no_data)
+
+
+@app.route('/api/doctor/detail', methods=['GET', 'POST'])
+def doctor_detail():
+    post = request.values.get('post')
+    id = json.loads(post)['id']
+    dic = search_sql_id('doctorinfo', 'id', id, database, host, user, password)
+    if dic:
+        print(f"用户获取医生详情成功，当前医生id为{id}")
+        return jsonify({"status": 200, "data": {"result": dic}})
+    else:
+        print(f"用户获取医生详情失败，当前医生id为{id}")
+        return jsonify(no_data)
+
+
+@app.route('/api/info', methods=['POST'])
+def get_info():
+    post = request.values.get('post')
+    post = json.loads(post)
+    openid = post['openid']
+    data = post['data']
+    result = find_info(openid, database, host, user, password)
+    if not result:
+        insert_into_info(openid, data, database, host, user, password)
+    else:
+        update_info(openid, data, database, host, user, password)
+    return jsonify({"status": 200, "data": {"result": "添加用户信息成功"}})
 
 
 if __name__ == '__main__':

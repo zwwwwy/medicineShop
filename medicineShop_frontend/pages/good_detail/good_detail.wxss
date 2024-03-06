@@ -20,6 +20,16 @@
     margin-right: 10rpx;
 }
 
+.head .factory {
+    background-color: gainsboro;
+    padding: 10rpx;
+    border-radius: 20rpx;
+    width: 95%;
+    margin-left: 1.5%;
+    margin-top: 10rpx;
+    margin-bottom: 10rpx;
+}
+
 .popup .popupItem .image {
     width: 260rpx;
     height: 260rpx;

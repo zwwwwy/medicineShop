@@ -1,0 +1,23 @@
+<view class="page">
+    <view class="sidebar">
+
+        <van-sidebar active-key="{{ activeKey }}" bind:change="onChange">
+            <van-sidebar-item title="外科"/>
+            <van-sidebar-item title="内科"/>
+            <van-sidebar-item title="耳鼻喉科"/>
+            <van-sidebar-item title="儿科"/>
+            <van-sidebar-item title="中医科"/>
+            <!--            后续如需添加其他内容，记得在js文件里的category_name里也进行修改-->
+        </van-sidebar>
+    </view>
+
+
+    <view wx:for="{{doctorData}}" wx:key="index" class="doctor-list">
+        <navigator url="/pages/doctorDetail/doctorDetail?id={{item.id}}">
+            <view class="name">姓名：{{item.name}}</view>
+            <view class="age">年龄：{{item.age}}</view>
+            <view class="gender">性别：{{item.gender}}</view>
+            <view class="skill">专长：{{item.skill}}</view>
+        </navigator>
+    </view>
+</view>

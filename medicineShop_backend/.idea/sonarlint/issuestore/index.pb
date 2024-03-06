@@ -30,3 +30,5 @@ goods.json,4\1\4175eca3f363b30bf83464a6c1262299fe8d9abf
 test.py,a\3\a36e355ddb203d7d4133221f339dc406cb9f480f
 8
 goods.py,9\8\98a2f9c0473498c0a8a2d91fcccbe22a446adf6c
+<
+user_info.py,d\a\da60d50ecadc2e2e86c57964545f69d2f53a0118

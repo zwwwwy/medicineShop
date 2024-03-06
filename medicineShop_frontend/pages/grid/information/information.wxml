@@ -1,30 +1,54 @@
 <van-cell-group>
     <van-field
-            value="{{ username }}"
-            required
-            clearable
+            value="{{ message }}"
             label="家庭慢性病情况"
-            icon="question-o"
-            placeholder="请输入用户名"
-            bind:click-icon="onClickIcon"
-            size="large"
-    />
-
-    <van-field
-            value="{{ password }}"
-            type="过敏情况"
-            label="密码"
-            placeholder="请输入密码"
-            required
+            type="textarea"
+            placeholder="请输入内容"
+            autosize
             border="{{ false }}"
-    />
-
-    <van-field
-            value="{{ password }}"
-            type="是否有孩子"
-            label="密码"
-            placeholder="请输入密码"
-            required
-            border="{{ false }}"
+            bind:change="change1"
     />
 </van-cell-group>
+
+<van-cell-group>
+    <van-field
+            value="{{ message }}"
+            label="过敏情况"
+            type="textarea"
+            placeholder="请输入内容"
+            autosize
+            border="{{ false }}"
+            bind:change="change2"
+    />
+</van-cell-group>
+
+<view class="radio">
+    <view class="ques">
+        是否有孩子
+    </view>
+
+    <view class="ans">
+        <van-radio-group
+                value="{{ 1 }}"
+                bind:change="radioChange"
+                direction="horizontal"
+        >
+            <van-radio name="是">是</van-radio>
+            <van-radio name="否">否</van-radio>
+        </van-radio-group>
+    </view>
+</view>
+
+<view class="buttonBack" wx:if="{{checked1&&checked2&&checked3}}">
+    <van-button type="primary" class="button" bind:click="submitInfo">提交</van-button>
+</view>
+<view class="buttonBack" wx:else >
+    <van-button type="primary" class="button" bind:click="submitInfo" disabled>请填写完信息</van-button>
+</view>
+
+<van-dialog
+  title="填写成功"
+  message="点击确定返回首页"
+  show="{{ show }}"
+  bind:close="submitted"
+/>

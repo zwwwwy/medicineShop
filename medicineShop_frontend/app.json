@@ -4,7 +4,7 @@
     "pages/category/category",
     "pages/cart/cart",
     "pages/user/user",
-    "pages/grid/communication/communication",
+    "pages/grid/doctor/doctor",
     "pages/grid/information/information",
     "pages/grid/unReceived/unReceived",
     "pages/grid/allOrder/allOrder",
@@ -13,7 +13,8 @@
     "pages/good_detail/good_detail",
     "pages/charge/charge",
     "pages/pay/pay",
-    "pages/express/express"
+    "pages/express/express",
+    "pages/doctorDetail/doctorDetail"
   ],
   "window": {
     "navigationBarTextStyle": "black",
