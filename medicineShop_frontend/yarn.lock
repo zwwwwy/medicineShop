@@ -2,12 +2,17 @@
 # yarn lockfile v1
 
 
+"@qiun/wx-ucharts@^2.5.0-20230101":
+  version "2.5.0-20230101"
+  resolved "https://registry.npmjs.org/@qiun/wx-ucharts/-/wx-ucharts-2.5.0-20230101.tgz"
+  integrity sha512-sAaNUf4U6r4/0JZMTlfNwrtfT0v8qFO02B/wYsj4yZGTDAQ/QctGgKI7hVUDUSrqZnjH6xWqE+ql0FOIs1fTuQ==
+
 "@vant/area-data@^1.5.1":
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/@vant/area-data/-/area-data-1.5.1.tgz#bdd943b9b569476cb04133a8323bd04aa35be2c2"
-  integrity sha512-gR5TPEzTbxN1cTK1aDhCoyikSCLX7DAacxyXoKyI4SAsYYTZrDl/nLgQFIm9vLsvWzlPIda8xV8/U3x7M9k6ww==
+  version "1.5.2"
+  resolved "https://registry.npmjs.org/@vant/area-data/-/area-data-1.5.2.tgz"
+  integrity sha512-Gtxgt6Rjgopt6234ANpO0bBsSwtjZ23lBlVDHIy8Mi2NJqyoj1vgVWY0dri8/2LCZAWzQ6EnwRrUVViUZ0cvMA==
 
 "@vant/weapp@^1.11.4":
   version "1.11.4"
-  resolved "https://registry.yarnpkg.com/@vant/weapp/-/weapp-1.11.4.tgz#9f758b95ab17d5b4e8d7a563bed26acf69a830c3"
+  resolved "https://registry.npmjs.org/@vant/weapp/-/weapp-1.11.4.tgz"
   integrity sha512-egOsWO4hVMP1SQSqQ46jy8UD3WysvlnUecRzPM21Y3ovkOFZ6wlaO7oHQmTXRpwr+V41Qri1qEbtNjhVxFqdyw==

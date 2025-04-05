@@ -1,0 +1,22 @@
+
+<view class="charts-box">
+  <qiun-wx-ucharts 
+    type="area"
+    opts="{{opts}}"
+    chartData="{{chartData}}"
+    canvas2d="{{true}}"
+  />
+</view>
+
+<view class="nav">
+    <van-grid column-num="1">
+        <block wx:for="{{ navData }}" wx:key="index">
+            <van-grid-item
+                    icon="{{ item.icon }}"
+                    text="{{ item.text }}"
+                    link-type="navigateTo"
+                    url="{{ item.url }}"
+            />
+        </block>
+    </van-grid>
+</view>

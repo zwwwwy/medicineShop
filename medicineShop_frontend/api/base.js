@@ -24,6 +24,6 @@ module.exports = {
     doctor: "/api/doctor", // 医生接口
     doctorDetail: "/api/doctor/detail", // 医生详情接口
     info: "/api/info", // 用户信息接口
-
+    filter: "/api/platform/filter", // 平台数据接口
 
 }

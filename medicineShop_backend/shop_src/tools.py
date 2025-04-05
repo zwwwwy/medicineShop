@@ -1,6 +1,6 @@
 import json
 
-with open('no_data.json', 'r', encoding='utf-8') as file:
+with open('shop_src/no_data.json', 'r', encoding='utf-8') as file:
     no_data = json.load(file)
 
 

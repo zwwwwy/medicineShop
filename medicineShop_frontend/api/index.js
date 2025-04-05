@@ -5,7 +5,7 @@ const {
     search, good_detail, category, cart,
     addCart, changeCart, stepper, freshCart,
     deleteCart, addOrder, orderIndex, pay,
-    order, doctor, doctorDetail, info
+    order, doctor, doctorDetail, info, filter
 } = require("./base");
 
 /**
@@ -107,6 +107,10 @@ function getDoctorDetail(id) {
 function postInfo(openid, data){
     return post_request(baseUrl + info, {"openid":openid, "data":data})
 }
+
+function getFilter() {
+    return request(baseUrl + filter, "GET", {})
+}
 module.exports = {
     appLogin,
     getSwiper,
@@ -126,5 +130,6 @@ module.exports = {
     getOrder,
     getDoctor,
     getDoctorDetail,
-    postInfo
+    postInfo,
+    getFilter
 }

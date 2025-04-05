@@ -5,16 +5,19 @@ import json
 import time
 from flask import Flask, jsonify, request
 from mysql.connector import errors
-from tools import no_data, paging
-from read_sql_data import read_sql_data
-from search_sql import search_sql, search_sql_id, search_sql_id_in
-from cart import insert_into_cart, find_cart_info, update_into_cart, delete_cart_item
-from order import find_order_info, insert_into_order, update_into_order
-from goods import update_into_goods
-from user_info import insert_into_info, find_info, update_info
+from shop_src.tools import no_data, paging
+from shop_src.read_sql_data import read_sql_data
+from shop_src.search_sql import search_sql, search_sql_id, search_sql_id_in
+from shop_src.cart import insert_into_cart, find_cart_info, update_into_cart, delete_cart_item
+from shop_src.order import find_order_info, insert_into_order, update_into_order
+from shop_src.goods import update_into_goods
+from shop_src.user_info import insert_into_info, find_info, update_info
+
+from platform_src.processor import processors
+from platform_src.filter import filters, filter_soil_data
+processors()
 
 app = Flask(__name__)
-
 
 @app.route('/api/login', methods=['GET', 'POST'])
 def login():
@@ -432,6 +435,20 @@ def get_info():
         update_info(openid, data, database, host, user, password)
     return jsonify({"status": 200, "data": {"result": "添加用户信息成功"}})
 
+
+@app.route("/api/platform/filter", methods=['GET', 'POST'])
+def filter():
+    df = filter_soil_data()
+    dic = dict()
+
+    col_name = ["总鲜重", "地上部", "须根", "根茎"]
+
+    dic["categories"] = list(df["菌株"])
+    dic["series"] = []
+    for i in col_name:
+        dic["series"].append({"name": i, "data": df[i].tolist()})
+    return jsonify({"status": 200, "data": dic})
+    
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", debug=True)

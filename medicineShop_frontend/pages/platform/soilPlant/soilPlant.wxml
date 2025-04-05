@@ -1,0 +1,8 @@
+<view class="charts-box">
+  <qiun-wx-ucharts 
+    type="area"
+    opts="{{opts}}"
+    chartData="{{chartData}}"
+    canvas2d="{{true}}"
+  />
+</view>

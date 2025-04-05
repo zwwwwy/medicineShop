@@ -14,14 +14,15 @@
     "pages/charge/charge",
     "pages/pay/pay",
     "pages/express/express",
-    "pages/doctorDetail/doctorDetail"
+    "pages/doctorDetail/doctorDetail",
+    "pages/platform/platformIndex/platformIndex",
+    "pages/platform/soilPlant/soilPlant"
   ],
   "window": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "medicineShop",
     "navigationBarBackgroundColor": "#ffffff"
   },
-
   "tabBar": {
     "color": "#666",
     "selectedColor": "#fa2c19",
@@ -45,6 +46,12 @@
         "selectedIconPath": "./images/cart_red.png"
       },
       {
+        "pagePath": "pages/platform/platformIndex/platformIndex",
+        "text": "平台",
+        "iconPath": "./images/category_red.png",
+        "selectedIconPath": "./images/category_red.png"
+      },
+      {
         "pagePath": "pages/user/user",
         "text": "我的",
         "iconPath": "./images/user_black.png",
@@ -55,6 +62,4 @@
   "componentFramework": "glass-easel",
   "sitemapLocation": "sitemap.json",
   "lazyCodeLoading": "requiredComponents"
-
-
 }
