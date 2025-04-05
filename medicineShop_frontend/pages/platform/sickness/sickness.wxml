@@ -1,8 +1,18 @@
-病害分析<view class="charts-box">
+<view class="center-text">病虫密度</view >
+<view class="charts-box">
   <qiun-wx-ucharts 
-    type="area"
+    type="rose"
     opts="{{opts}}"
-    chartData="{{chartData}}"
+    chartData="{{chartData1}}"
+    canvas2d="{{true}}"
+  />
+</view>
+<view class="center-text">杂草密度</view >
+<view class="charts-box">
+  <qiun-wx-ucharts 
+    type="rose"
+    opts="{{opts}}"
+    chartData="{{chartData2}}"
     canvas2d="{{true}}"
   />
 </view>

@@ -6,43 +6,52 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
-		chartData: {},
+		chartData1: {
+			series: [
+				{
+				  data: [{"name":"一区","value":50},{"name":"二区","value":30},{"name":"三区","value":20},{"name":"四区","value":18},{"name":"五区","value":8}]
+				}
+			  ]
+		},
+		chartData2: {
+			series: [
+				{
+				  data: [{"name":"一区","value":26},{"name":"二区","value":18},{"name":"三区","value":35},{"name":"四区","value":40},{"name":"五区","value":19}]
+				}
+			  ]
+		},
 		//您可以通过修改 config-ucharts.js 文件中下标为 ['area'] 的节点来配置全局默认参数，如都是默认参数，此处可以不传 opts 。实际应用过程中 opts 只需传入与全局默认参数中不一致的【某一个属性】即可实现同类型的图表显示不同的样式，达到页面简洁的需求。
 		opts: {
-			color: ["#1890FF", "#91CB74", "#FAC858", "#EE6666", "#73C0DE", "#3CA272", "#FC8452", "#9A60B4", "#ea7ccc"],
-			padding: [15, 15, 0, 15],
+			color: ["#1890FF","#91CB74","#FAC858","#EE6666","#73C0DE","#3CA272","#FC8452","#9A60B4","#ea7ccc"],
+			padding: [5,5,5,5],
 			enableScroll: false,
-			legend: {},
-			xAxis: {
-				disableGrid: true
-			},
-			yAxis: {
-				gridType: "dash",
-				dashLength: 2
+			legend: {
+			  show: true,
+			  position: "left",
+			  lineHeight: 25
 			},
 			extra: {
-				area: {
-					type: "curve",
-					opacity: 0.2,
-					addLine: true,
-					width: 2,
-					gradient: true,
-					activeType: "hollow"
-				}
+			  rose: {
+				type: "radius",
+				minRadius: 50,
+				activeOpacity: 0.5,
+				activeRadius: 10,
+				offsetAngle: 0,
+				labelWidth: 15,
+				border: true,
+				borderWidth: 2,
+				borderColor: "#FFFFFF",
+				linearType: "custom"
+			  }
 			}
-		}
+		  }
 	},
 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad() {
-		getFilter().then(res => {
-			console.log(res.data.data)
-			this.setData({
-				chartData: res.data.data
-			})
-		})
+
 	},
 
 	/**

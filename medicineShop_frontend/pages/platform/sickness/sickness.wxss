@@ -1,1 +1,5 @@
 /* pages/platform.wxss */
+.center-text {
+    text-align: center;
+    margin-top: 50rpx;
+  }

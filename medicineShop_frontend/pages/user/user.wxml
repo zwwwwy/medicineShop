@@ -8,7 +8,7 @@
 </view>
 
 <view class="nav">
-    <van-grid column-num="4">
+    <van-grid column-num="3">
         <block wx:for="{{ navData }}" wx:key="index">
             <van-grid-item
                     icon="{{ item.icon }}"

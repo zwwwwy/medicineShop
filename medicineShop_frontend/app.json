@@ -52,8 +52,8 @@
       {
         "pagePath": "pages/platform/platformIndex/platformIndex",
         "text": "平台",
-        "iconPath": "./images/category_red.png",
-        "selectedIconPath": "./images/category_red.png"
+        "iconPath": "./images/platform_black.png",
+        "selectedIconPath": "./images/platform_red.png"
       },
       {
         "pagePath": "pages/user/user",

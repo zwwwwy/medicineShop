@@ -17,14 +17,24 @@ Page({
                 url: "/pages/grid/allOrder/allOrder"
             },
             {
-                icon: "https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/doctor.png",
-                text: "医生信息",
+                icon: "https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/phone_red.png",
+                text: "在线咨询",
                 url: "/pages/grid/doctor/doctor"
             },
             {
-                icon: "https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/info.png",
-                text: "健康信息",
+                icon: "https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/calendar.png",
+                text: "施肥日历",
                 url: "/pages/grid/information/information"
+            },
+            {
+                icon: "https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/bug.png",
+                text: "虫害图谱",
+                url: "/pages/grid/doctor/doctor"
+            },
+            {
+                icon: "https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/grass.png",
+                text: "杂草图谱",
+                url: "/pages/grid/doctor/doctor"
             }
 
         ],

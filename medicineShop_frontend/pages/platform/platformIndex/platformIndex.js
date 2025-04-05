@@ -8,18 +8,18 @@ Page({
 	data: {
 		navData: [
             {
-                icon: "https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/dsh.png",
+                icon: "https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/land.png",
                 text: "农田检测",
                 url: "/pages/platform/soilPlant/soilPlant"
             },
             {
-                icon: "https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/qbdd.png",
+                icon: "https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/analyse.png",
                 text: "病害分析",
                 url: "/pages/platform/sickness/sickness"
             },
             {
-                icon: "https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/doctor.png",
-                text: "种植方案",
+                icon: "https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/scheme.png",
+                text: "施肥方案",
                 url: "/pages/platform/scheme/scheme"
             }
         ],
