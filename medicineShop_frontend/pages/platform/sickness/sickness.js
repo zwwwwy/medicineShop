@@ -6,23 +6,6 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
-		navData: [
-            {
-                icon: "https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/dsh.png",
-                text: "农田检测",
-                url: "/pages/platform/soilPlant/soilPlant"
-            },
-            {
-                icon: "https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/qbdd.png",
-                text: "病害分析",
-                url: "/pages/platform/sickness/sickness"
-            },
-            {
-                icon: "https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/doctor.png",
-                text: "种植方案",
-                url: "/pages/platform/scheme/scheme"
-            }
-        ],
 		chartData: {},
 		//您可以通过修改 config-ucharts.js 文件中下标为 ['area'] 的节点来配置全局默认参数，如都是默认参数，此处可以不传 opts 。实际应用过程中 opts 只需传入与全局默认参数中不一致的【某一个属性】即可实现同类型的图表显示不同的样式，达到页面简洁的需求。
 		opts: {

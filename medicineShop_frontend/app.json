@@ -17,6 +17,8 @@
     "pages/doctorDetail/doctorDetail",
     "pages/platform/platformIndex/platformIndex",
     "pages/platform/soilPlant/soilPlant",
+    "pages/platform/sickness/sickness",
+    "pages/platform/scheme/scheme",
     "pages/diagram/line/line",
     "pages/diagram/rose/rose"
   ],

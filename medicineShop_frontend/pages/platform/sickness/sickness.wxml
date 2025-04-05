@@ -1,4 +1,4 @@
-农田检测<view class="charts-box">
+病害分析<view class="charts-box">
   <qiun-wx-ucharts 
     type="area"
     opts="{{opts}}"
