@@ -9,6 +9,20 @@
     "miniprogram": {
       "list": [
         {
+          "name": "pages/diagram/line/line",
+          "pathName": "pages/diagram/line/line",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/platform/soilPlant/soilPlant",
+          "pathName": "pages/platform/soilPlant/soilPlant",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "pages/platform/platformIndex/platformIndex",
           "pathName": "pages/platform/platformIndex/platformIndex",
           "query": "",

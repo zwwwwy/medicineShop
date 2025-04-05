@@ -16,7 +16,9 @@
     "pages/express/express",
     "pages/doctorDetail/doctorDetail",
     "pages/platform/platformIndex/platformIndex",
-    "pages/platform/soilPlant/soilPlant"
+    "pages/platform/soilPlant/soilPlant",
+    "pages/diagram/line/line",
+    "pages/diagram/rose/rose"
   ],
   "window": {
     "navigationBarTextStyle": "black",

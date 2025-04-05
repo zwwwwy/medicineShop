@@ -1,0 +1,5 @@
+{
+	"usingComponents": {
+    	"qiun-wx-ucharts": "@qiun/wx-ucharts"
+	}
+}

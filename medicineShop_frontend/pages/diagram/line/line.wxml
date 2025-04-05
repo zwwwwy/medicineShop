@@ -1,4 +1,4 @@
-aaa<view class="charts-box">
+line<view class="charts-box">
   <qiun-wx-ucharts 
     type="area"
     opts="{{opts}}"
