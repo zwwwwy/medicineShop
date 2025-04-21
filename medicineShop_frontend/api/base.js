@@ -3,7 +3,7 @@
  */
 
 module.exports = {
-    baseUrl: "http://localhost:5000", // 本地公共地址
+    baseUrl: "http://8.137.111.252:5000", // 本地公共地址
     // baseUrl: "https://249ab13b.r2.cpolar.top", // 内网穿透地址
     login: "/api/login", // 登录接口
     swiper: "/api/swiper",  // 轮播图接口

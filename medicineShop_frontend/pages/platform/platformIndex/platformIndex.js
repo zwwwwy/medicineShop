@@ -21,6 +21,11 @@ Page({
                 icon: "https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/scheme.png",
                 text: "施肥方案",
                 url: "/pages/platform/scheme/scheme"
+            },
+            {
+                icon: "https://zhengwenyuan-public-read-oss.oss-cn-chengdu.aliyuncs.com/shop_test/distribute.png",
+                text: "杂草分布",
+                url: "/pages/platform/scheme/scheme"
             }
         ],
 		chartData: {},

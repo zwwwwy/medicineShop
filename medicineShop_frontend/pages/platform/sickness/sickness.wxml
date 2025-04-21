@@ -1,4 +1,4 @@
-<view class="center-text">病虫密度</view >
+<view class="center-text">病害密度</view >
 <view class="charts-box">
   <qiun-wx-ucharts 
     type="rose"
