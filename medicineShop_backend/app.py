@@ -468,8 +468,6 @@ def get_disease():
         return_lst.append([post[:-4]] + df.iloc[:, 0].tolist())
         for i in range(1, len(df.columns)):
             return_lst.append([df.columns[i]] + [round(x, 2) for x in df.iloc[:, i].tolist()])
-        print(df)
-        print("return", return_lst)
 
         return jsonify({"status": 200, "data": return_lst})
     else:
