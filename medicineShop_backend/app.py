@@ -3,6 +3,9 @@ from static.info import database, host, user, password, appId, appSecret
 import requests
 import json
 import time
+import os
+import pandas as pd
+
 from flask import Flask, jsonify, request
 from mysql.connector import errors
 from shop_src.tools import no_data, paging
@@ -15,9 +18,14 @@ from shop_src.user_info import insert_into_info, find_info, update_info
 
 from platform_src.processor import processors
 from platform_src.filter import filters, filter_soil_data
+
 processors()
 
+
 app = Flask(__name__)
+
+from flask_cors import CORS
+CORS(app)
 
 @app.route('/api/login', methods=['GET', 'POST'])
 def login():
@@ -449,6 +457,24 @@ def filter():
         dic["series"].append({"name": i, "data": df[i].tolist()})
     return jsonify({"status": 200, "data": dic})
     
+@app.route('/api/platform/disease', methods=['GET', 'POST'])
+def get_disease():
+    post = request.values.get('post')[1: -1] + ".csv"
+    files = os.listdir("platform_data/disease")
+    return_lst = []
+
+    if post in files:
+        df = pd.read_csv(f"platform_data/disease/{post}")
+        return_lst.append([post[:-4]] + df.iloc[:, 0].tolist())
+        for i in range(1, len(df.columns)):
+            return_lst.append([df.columns[i]] + [round(x, 2) for x in df.iloc[:, i].tolist()])
+        print(df)
+        print("return", return_lst)
+
+        return jsonify({"status": 200, "data": return_lst})
+    else:
+        print("没有该文件")
+        return jsonify({"status": 400, "data": {"result": "没有该文件"}})
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", debug=True)
