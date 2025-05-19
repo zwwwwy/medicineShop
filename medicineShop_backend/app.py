@@ -459,17 +459,28 @@ def filter():
     
 @app.route('/api/platform/disease', methods=['GET', 'POST'])
 def get_disease():
-    post = request.values.get('post')[1: -1] + ".csv"
+    post = request.values.get('post').split("&")
+    post, start_date, end_date = post[0][1:] + ".csv", pd.to_datetime(post[1]), pd.to_datetime(post[2][:-1])
+
     files = os.listdir("platform_data/disease")
     return_lst = []
 
     if post in files:
         df = pd.read_csv(f"platform_data/disease/{post}")
+        df["日期"] = pd.to_datetime(df["日期"])
+
+        max_date = df["日期"].max().strftime('%Y年%m月%d日')
+        min_date = df["日期"].min().strftime('%Y年%m月%d日')
+        len_date = len(df["日期"])
+
+        df = df[(df["日期"]>=start_date) & (df["日期"]<=end_date)]
+        df["日期"] = df["日期"].dt.strftime('%Y/%m/%d')
+
         return_lst.append([post[:-4]] + df.iloc[:, 0].tolist())
         for i in range(1, len(df.columns)):
             return_lst.append([df.columns[i]] + [round(x, 2) for x in df.iloc[:, i].tolist()])
 
-        return jsonify({"status": 200, "data": return_lst})
+        return jsonify({"status": 200, "data": return_lst, "max_date": max_date, "min_date": min_date, "len_date": len_date})
     else:
         print("没有该文件")
         return jsonify({"status": 400, "data": {"result": "没有该文件"}})
